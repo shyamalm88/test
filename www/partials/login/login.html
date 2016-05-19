@@ -1,0 +1,41 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+        <button class="button button-clear button-primary" ng-click="closeModal()">
+            <i class="ion-android-arrow-back"></i>
+        </button>
+        <h1 class="title modalHeader">Login</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="has-header loginSection">
+            <div class="loginBanner">
+                <img src="img/loginlogo.png" alt="">
+            </div>
+            <div class="loginFormSection">
+                <h2 class="welcome">Welcome back!</h2>
+                <div class="loginForm" padding="true">
+                    <div class="list">
+                        <label class="item item-input">
+                            <input type="email" placeholder="Email">
+                        </label>
+                        <label class="item item-input">
+                            <input type="password" placeholder="Password">
+                        </label>
+                        <button class="button button-block button-outline button-positive loginBtn">
+                            Login
+                        </button>
+                        <button class="button button-block button-positive fbBtn">
+                            Facebook
+                        </button>
+                        <p>
+                            <small>
+                                Have You
+                                <a href="#">forgot your password</a> Or
+                                <a href="#">you are a new user.</a>
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

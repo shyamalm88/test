@@ -1,0 +1,27 @@
+<ion-side-menu side="left">
+    <ion-content>
+        <ion-list>
+            <ion-item menu-close ng-click="openModal()" class="askLogin">
+                <i class="ion-android-person"></i> Login
+            </ion-item>
+            <ul class="mainNav">
+                <li ng-click="toggleGroup(group)" ng-repeat="group in groups.menu">
+                    <a href="#/">
+                        <i class="icon-{{group.icon}} menuIcon "></i>{{group.title}}
+                        <i class="pull-right accordionArrow ion-ios-arrow-down" ng-show="group.submenu" ng-class="{'ion-ios-arrow-up': isGroupShown(group)}"></i>
+                    </a>
+                    <ul ng-if="group.submenu" ng-show="isGroupShown(group) " class="submenu ">
+                        <li ng-repeat="submenu in group.submenu ">
+                            <a href="#/ ">
+                                <i class="icon-{{submenu.menu_icon}} menuIcon "></i>{{submenu.menu_title}}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li menu-close>
+                    <a href="#/">
+                        <i class="fa fa-gears menuIcon "></i>Settings</a>
+                </li>
+            </ul>
+        </ion-list>
+    </ion-content>
+</ion-side-menu>

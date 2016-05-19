@@ -1,0 +1,362 @@
+@font-face {
+    font-family: 'imhere';
+    src: url('f../onts/imhere.eot?s613fh');
+    src: url('../fonts/imhere.eot?s613fh#iefix') format('embedded-opentype'), url('../fonts/imhere.ttf?s613fh') format('truetype'), url('../fonts/imhere.woff?s613fh') format('woff'), url('../fonts/imhere.svg?s613fh#imhere') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'imhere' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-casino:before {
+    content: "\e916";
+}
+
+.icon-airport:before {
+    content: "\e900";
+}
+
+.icon-amusement-park:before {
+    content: "\e901";
+}
+
+.icon-art:before {
+    content: "\e902";
+}
+
+.icon-atm:before {
+    content: "\e903";
+}
+
+.icon-bank:before {
+    content: "\e904";
+}
+
+.icon-blood-bank:before {
+    content: "\e905";
+}
+
+.icon-book:before {
+    content: "\e906";
+}
+
+.icon-bookmark:before {
+    content: "\e907";
+}
+
+.icon-bowling:before {
+    content: "\e908";
+}
+
+.icon-breakfast:before {
+    content: "\e909";
+}
+
+.icon-bus-stop:before {
+    content: "\e90a";
+}
+
+.icon-bus:before {
+    content: "\e90b";
+}
+
+.icon-car-repair:before {
+    content: "\e90c";
+}
+
+.icon-car:before {
+    content: "\e90d";
+}
+
+.icon-cart:before {
+    content: "\e90e";
+}
+
+.icon-chicken:before {
+    content: "\e90f";
+}
+
+.icon-city-hall:before {
+    content: "\e910";
+}
+
+.icon-cocktail:before {
+    content: "\e911";
+}
+
+.icon-coffee:before {
+    content: "\e912";
+}
+
+.icon-college:before {
+    content: "\e913";
+}
+
+.icon-delivery:before {
+    content: "\e914";
+}
+
+.icon-dining-meal:before {
+    content: "\e915";
+}
+
+.icon-dinner:before {
+    content: "\e917";
+}
+
+.icon-disco:before {
+    content: "\e918";
+}
+
+.icon-drink:before {
+    content: "\e919";
+}
+
+.icon-fine-dine:before {
+    content: "\e91a";
+}
+
+.icon-fish:before {
+    content: "\e91b";
+}
+
+.icon-food:before {
+    content: "\e91c";
+}
+
+.icon-fun:before {
+    content: "\e91d";
+}
+
+.icon-furniture:before {
+    content: "\e91e";
+}
+
+.icon-gps:before {
+    content: "\e91f";
+}
+
+.icon-gym:before {
+    content: "\e920";
+}
+
+.icon-hardware:before {
+    content: "\e921";
+}
+
+.icon-heart:before {
+    content: "\e922";
+}
+
+.icon-home:before {
+    content: "\e923";
+}
+
+.icon-hospital:before {
+    content: "\e924";
+}
+
+.icon-indian:before {
+    content: "\e925";
+}
+
+.icon-jewelry:before {
+    content: "\e926";
+}
+
+.icon-liquor:before {
+    content: "\e927";
+}
+
+.icon-location-magnify:before {
+    content: "\e928";
+}
+
+.icon-location-map:before {
+    content: "\e929";
+}
+
+.icon-location-outline:before {
+    content: "\e92a";
+}
+
+.icon-location-pin:before {
+    content: "\e92b";
+}
+
+.icon-location:before {
+    content: "\e92c";
+}
+
+.icon-lunch:before {
+    content: "\e92d";
+}
+
+.icon-mall:before {
+    content: "\e92e";
+}
+
+.icon-man-cycling:before {
+    content: "\e92f";
+}
+
+.icon-medicine:before {
+    content: "\e930";
+}
+
+.icon-meeting-point:before {
+    content: "\e931";
+}
+
+.icon-menu:before {
+    content: "\e932";
+}
+
+.icon-metro:before {
+    content: "\e933";
+}
+
+.icon-misc:before {
+    content: "\e934";
+}
+
+.icon-museum:before {
+    content: "\e935";
+}
+
+.icon-chinese:before {
+    content: "\e936";
+}
+
+.icon-school:before {
+    content: "\e938";
+}
+
+.icon-open-book:before {
+    content: "\e939";
+}
+
+.icon-tickets:before {
+    content: "\e93a";
+}
+
+.icon-park:before {
+    content: "\e93b";
+}
+
+.icon-parking:before {
+    content: "\e93c";
+}
+
+.icon-pet:before {
+    content: "\e93d";
+}
+
+.icon-pizza:before {
+    content: "\e93e";
+}
+
+.icon-police:before {
+    content: "\e93f";
+}
+
+.icon-power:before {
+    content: "\e940";
+}
+
+.icon-race-course:before {
+    content: "\e941";
+}
+
+.icon-restaurant:before {
+    content: "\e942";
+}
+
+.icon-rs:before {
+    content: "\e943";
+}
+
+.icon-travel:before {
+    content: "\e944";
+}
+
+.icon-school-book:before {
+    content: "\e945";
+}
+
+.icon-search:before {
+    content: "\e946";
+}
+
+.icon-share:before {
+    content: "\e947";
+}
+
+.icon-shop:before {
+    content: "\e948";
+}
+
+.icon-spa:before {
+    content: "\e949";
+}
+
+.icon-stadium:before {
+    content: "\e94a";
+}
+
+.icon-store-1:before {
+    content: "\e94b";
+}
+
+.icon-store:before {
+    content: "\e94c";
+}
+
+.icon-taxi:before {
+    content: "\e94d";
+}
+
+.icon-temple:before {
+    content: "\e94e";
+}
+
+.icon-theater:before {
+    content: "\e94f";
+}
+
+.icon-tool:before {
+    content: "\e951";
+}
+
+.icon-shoe:before {
+    content: "\e952";
+}
+
+.icon-train:before {
+    content: "\e953";
+}
+
+.icon-university:before {
+    content: "\e954";
+}
+
+.icon-user-avatar-main-picture:before {
+    content: "\e955";
+}
+
+.icon-zoo:before {
+    content: "\e956";
+}
