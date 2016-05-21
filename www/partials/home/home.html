@@ -41,19 +41,19 @@
         <div class="mainContent">
             <div ng-repeat="item in homeService.searchFilterGroup">
                 <h4 class="meal text-center">{{item.heading}}</h4>
-                <div ng-if="item.type != 'slide'">
+                <!-- <div ng-if="item.type != 'slide'"> -->
                     <div class="row" ng-repeat="filters in item.filters" ng-if="$index % 4 == 0">
                         <div class="col-25" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]">
                             <div class="card homeCustomecard">
-                                <div class="item item-text-wrap">
+                                <div class="item item-text-wrap" ng-click="getDetails(item.filters[i].name)">
                                     <img ng-src="{{item.filters[i].imgPath}}" alt="">
                                     <h4>{{item.filters[i].name}}</h4>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div ng-if="item.type == 'slide'">
+                <!-- </div> -->
+                <!-- <div ng-if="item.type == 'slide'">
                     <ion-slide-box on-slide-changed="slideChanged(index)" auto-play="true" show-pager="false" does-continue="true">
                         <ion-slide ng-repeat="filters in item.filters" ng-if="$index % 4 == 0">
                             <div class="row">
@@ -68,7 +68,7 @@
                             </div>
                         </ion-slide>
                     </ion-slide-box>
-                </div>
+                </div> -->
             </div>
         </div>
     </ion-content>

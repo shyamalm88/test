@@ -5,11 +5,13 @@ hereApp.controller('homeController', ['$scope', '$state','hereAppConstant', 'hom
 
 
     	$scope.homeService = homeService;
-        // if needed to apply something for all route change
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams, $mdToast) {
 
         })
 
+        $scope.getDetails = function(item){
+        	$state.go('searchResult', {type:item});
+        }
 
     }
 ])

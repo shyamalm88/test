@@ -5,6 +5,7 @@ hereApp.constant('hereAppConstant',{
 	},
 	'WSURL':{
 		'GET_PLACE_AUTOCOMPLETE':'webService/getPlaceAutoComplete',
-		'GET_PLACE_DETAILS':'webService/getPlaceDetails'
+		'GET_PLACE_DETAILS':'webService/getPlaceDetails',
+		'GET_NEAR_BY':'webService/getNearbyData',
 	}
 })

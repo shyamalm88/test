@@ -26,4 +26,5 @@ hereApp.service('proxyService', ['$http', 'hereAppConstant', 'hereAppUtil', '$q'
   // create whole url path
   this.getPlaceAutoComplete = hereAppUtil.createWSUrl(hereAppConstant.WSURL.GET_PLACE_AUTOCOMPLETE);
   this.getPlaceDetails = hereAppUtil.createWSUrl(hereAppConstant.WSURL.GET_PLACE_DETAILS);
+  this.getNearByData = hereAppUtil.createWSUrl(hereAppConstant.WSURL.GET_NEAR_BY);
 }])
