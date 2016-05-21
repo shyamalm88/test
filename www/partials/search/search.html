@@ -19,19 +19,10 @@
                 <div class="list">
                     <label class="item item-input">
                         <i class="icon ion-location placeholder-icon"></i>
-                        <md-autocomplete
-                            md-selected-item="commonService.userData.location"
-                            md-search-text="searchText"
-                            md-items="item in placeAutoCompleteList"
-                            md-item-text="item.description"
-                            md-search-text-change="getPlaceAutoCompleteData(searchText)" 
-                            md-selected-item-change="selectedItemChange(item)"
-                            md-min-length="1"
-                            placeholder="Location">
+                        <md-autocomplete md-selected-item="commonService.userData.location" md-search-text="searchText" md-items="item in placeAutoCompleteList" md-item-text="item.description" md-search-text-change="getPlaceAutoCompleteData(searchText)" md-selected-item-change="selectedItemChange(item)" md-min-length="1" placeholder="Location">
                             <md-item-template>
                                 <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.description}}</span>
                             </md-item-template>
-                            
                         </md-autocomplete>
                     </label>
                 </div>
