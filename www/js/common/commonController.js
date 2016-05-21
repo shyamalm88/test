@@ -1,11 +1,11 @@
 'use strict'
-hereApp.controller('commonController', ['$scope', '$state','hereAppConstant', 'commonService', '$ionicPopover', '$ionicHistory', '$ionicSideMenuDelegate', '$ionicModal',
-    function($scope, $state,hereAppConstant,commonService, $ionicPopover, $ionicHistory, $ionicSideMenuDelegate, $ionicModal) {
+hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', 'commonService', '$ionicPopover', '$ionicHistory', '$ionicSideMenuDelegate', '$ionicModal',
+    function($scope, $state, hereAppConstant, commonService, $ionicPopover, $ionicHistory, $ionicSideMenuDelegate, $ionicModal) {
         $scope.commonService = commonService;
         // if needed to apply something for all route change
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 
-        })
+            })
             //grant location access
         accessUserLoationData();
 

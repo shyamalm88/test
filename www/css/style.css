@@ -9,15 +9,18 @@ body {
     background: #fff;
     color: #333;
 }
+
 .item-input md-autocomplete,
 .item-input md-autocomplete md-autocomplete-wrap,
-.item-input md-autocomplete input:not(.md-input){
+.item-input md-autocomplete input:not(.md-input) {
     height: 34px;
     width: 100%;
 }
-.item-input .md-whiteframe-z1{
+
+.item-input .md-whiteframe-z1 {
     box-shadow: none;
 }
+
 .pane {
     background-color: #f0efef;
 }
@@ -127,6 +130,10 @@ body {
     overflow: hidden;
     margin-left: 40px;
     text-overflow: ellipsis;
+}
+
+.bar .title.title-center {
+    text-align: center !important;
 }
 
 .bar .buttons span.badge {
@@ -309,4 +316,70 @@ body {
 
 .mainNav ul li {
     transition: 0.09s all linear;
+}
+
+.homeCustomecard {
+    text-align: center;
+    background: transparent;
+    box-shadow: none;
+    margin: 0px;
+}
+
+.homeCustomecard .item {
+    background: transparent;
+    padding: 7px;
+}
+
+.homeCustomecard img {
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid rgba(2, 2, 2, 0.2);
+}
+
+.mainContent {
+    margin-top: 20px;
+}
+
+.mainBg {
+    background: url("../img/bgiconic-grey.png") repeat;
+}
+
+.meal {
+    margin-bottom: 10px;
+    color: #777676;
+    font-weight: normal;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 20px;
+    border-bottom: 3px double #ccc;
+    font-size: 15px;
+    padding-bottom: 10px;
+    border-top: 3px double #ccc;
+    padding-top: 10px;
+}
+
+.meal:first-child {
+    margin-top: 30px;
+}
+
+.has-footer-tab {
+    bottom: 28px;
+}
+
+.homeCustomecard .item h4 {
+    font-size: 11px;
+}
+
+.slider-pager {
+    position: absolute;
+    bottom: -4px;
+    z-index: 1;
+    width: 100%;
+    height: 15px;
+    text-align: center;
+    margin-bottom: 5px;
 }
