@@ -43,11 +43,7 @@
                 <h4 class="meal text-center">{{item.heading}}</h4>
                 <div ng-if="item.type != 'slide'">
                     <div class="row" ng-repeat="filters in item.filters" ng-if="$index % 4 == 0">
-<<<<<<< HEAD
                         <div class="col-25" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]">
-=======
-                        <div class="col-25" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]" >
->>>>>>> master
                             <div class="card homeCustomecard">
                                 <div class="item item-text-wrap">
                                     <img ng-src="{{item.filters[i].imgPath}}" alt="">
@@ -58,17 +54,10 @@
                     </div>
                 </div>
                 <div ng-if="item.type == 'slide'">
-<<<<<<< HEAD
                     <ion-slide-box on-slide-changed="slideChanged(index)" auto-play="false" show-pager="true" does-continue="false">
                         <ion-slide ng-repeat="filters in item.filters" ng-if="$index % 4 == 0">
                             <div class="row">
                                 <div class="col-25" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]">
-=======
-                <ion-slide-box on-slide-changed="slideChanged(index)" auto-play="true" show-pager="false" does-continue="true">
-                        <ion-slide ng-repeat="filters in item.filters" ng-if="$index % 4 == 0">
-                            <div class="row">
-                                <div class="col-25" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]" >
->>>>>>> master
                                     <div class="card homeCustomecard">
                                         <div class="item item-text-wrap">
                                             <img ng-src="{{item.filters[i].imgPath}}" alt="">
@@ -80,16 +69,7 @@
                         </ion-slide>
                     </ion-slide-box>
                 </div>
-<<<<<<< HEAD
             </div>
         </div>
     </ion-content>
-=======
-                
-                
-            </div>
-        </div>
-    </ion-content>
-    
->>>>>>> master
 </ion-view>
