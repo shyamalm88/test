@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div ng-if="item.type == 'slide'">
-                    <ion-slide-box on-slide-changed="slideChanged(index)" auto-play="true" show-pager="false" does-continue="true">
+                    <ion-slide-box on-slide-changed="slideChanged(index)" auto-play="false" show-pager="true" does-continue="false">
                         <ion-slide ng-repeat="filters in item.filters" ng-if="$index % 4 == 0">
                             <div class="row">
                                 <div class="col-25" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]">
