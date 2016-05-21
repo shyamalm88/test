@@ -21,54 +21,10 @@
             </div>
         </ion-nav-buttons>
     </ion-nav-bar>
-    <div class="bar bar-positive bar-subheader">
-        <div class="row">
-            <div class="col noPadding">
-                <div class="list">
-                    <label class="item item-input">
-                        <i class="icon ion-location placeholder-icon"></i>
-                        <md-autocomplete md-selected-item="commonService.userData.location" md-search-text="searchText" md-items="item in placeAutoCompleteList" md-item-text="item.description" md-search-text-change="getPlaceAutoCompleteData(searchText)" md-selected-item-change="selectedItemChange(item)" md-min-length="1" placeholder="Location">
-                            <md-item-template>
-                                <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.description}}</span>
-                            </md-item-template>
-                        </md-autocomplete>
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
-    <ion-content class="has-header has-subheader has-footer-tab mainBg">
-        <div class="mainContent">
-            <div ng-repeat="item in homeService.searchFilterGroup">
-                <h4 class="meal text-center">{{item.heading}}</h4>
-                <div ng-if="item.type != 'slide'">
-                    <div class="row" ng-repeat="filters in item.filters" ng-if="$index % 4 == 0">
-                        <div class="col-25" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]">
-                            <div class="card homeCustomecard">
-                                <div class="item item-text-wrap">
-                                    <img ng-src="{{item.filters[i].imgPath}}" alt="">
-                                    <h4>{{item.filters[i].name}}</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div ng-if="item.type == 'slide'">
-                    <ion-slide-box on-slide-changed="slideChanged(index)" auto-play="false" show-pager="true" does-continue="false">
-                        <ion-slide ng-repeat="filters in item.filters" ng-if="$index % 4 == 0">
-                            <div class="row">
-                                <div class="col-25" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]">
-                                    <div class="card homeCustomecard">
-                                        <div class="item item-text-wrap">
-                                            <img ng-src="{{item.filters[i].imgPath}}" alt="">
-                                            <h4>{{item.filters[i].name}}</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </ion-slide>
-                    </ion-slide-box>
-                </div>
+    <ion-content class="has-header">
+        <div class="card">
+            <div class="item item-text-wrap">
+                This is a basic Card which contains an item that has wrapping text.
             </div>
         </div>
     </ion-content>
