@@ -1,0 +1,15 @@
+<ion-view view-title="SearchResult">
+	<ion-content class="has-header has-subheader has-footer-tab mainBg">
+        <div class="mainContent">
+			<div ng-repeat="result in searchResultData">
+				<div class="card">
+				  <div class="item item-text-wrap">
+				    <h2>{{result.name}}</h2>
+				    <h4>Address: {{result.vicinity}}</h4>
+				    <h5>Rating: {{result.rating}}</h5>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

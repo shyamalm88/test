@@ -12,12 +12,13 @@ var mapApiKey = 'AIzaSyC4xjrSTD2KELiRE9a6VqFo5a7ykX8Ydw0',
 // creating method for api calling
 router.post('/getNearbyData', function(req, resp){
 	
-	var url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key='+searchApiKey,
+	var url = 'https://maps.googleapis.com/maps/api/place/search/json?hasNextPage=true&nextPage()=true&sensor=false&key='+searchApiKey,
 		optionUrl = createReqUrl(url, req.body),
-		options = {url: optionUrl};
-
+		options = {url: optionUrl},
+		pageToken;
+		console.log(options);
 	//sample req ==== 
-	//https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&name=cruise&key=AIzaSyAzyPg-0q71sGRkmFLxrTaI5-zZPDr3rSA
+	//https://maps.googleapis.com/maps/api/place/search/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&name=cruise&key=AIzaSyAzyPg-0q71sGRkmFLxrTaI5-zZPDr3rSA
 	request.get(options, function(error, response, body)	{
 		if(error)
 			resp.send(error);

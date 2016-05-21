@@ -405,3 +405,12 @@ body {
 .dineout {
     margin-bottom: 20px;
 }
+
+.slider-pager .slider-pager-page {
+    width: 7px;
+    margin: 0px 1px;
+}
+
+.slider-pager .slider-pager-page i {
+    font-size: 7px;
+}
