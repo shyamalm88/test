@@ -334,7 +334,6 @@ body {
     width: 60px;
     height: 60px;
     padding: 10px;
-    margin-bottom: 10px;
     background: #fff;
     border-radius: 50%;
     border: 1px solid rgba(2, 2, 2, 0.2);
@@ -382,4 +381,13 @@ body {
     height: 15px;
     text-align: center;
     margin-bottom: 5px;
+}
+
+.slider-pager .slider-pager-page {
+    width: 7px;
+    margin: 0px 1px;
+}
+
+.slider-pager .slider-pager-page i {
+    font-size: 7px;
 }
