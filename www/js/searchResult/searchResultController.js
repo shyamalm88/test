@@ -7,8 +7,8 @@ hereApp.controller('searchResultController',['$scope','$state','searchResultServ
 		$scope.getNearByData(toParams.type);
     })
 
-    $scope.getNearByData = function(item){
-    	var param = $scope.searchResultService.createReqParamForSearch(item);
+    $scope.getNearByData = function(type){
+    	var param = $scope.searchResultService.createReqParamForSearch(type);
     	$scope.commonService.proxyService.callWS($scope.commonService.proxyService.getNearByData, param)
         .then(function(data){
             if(data.status == "OK"){
