@@ -332,7 +332,11 @@ body {
 .homeCustomecard .item h4 {
     display: inline-block;
     vertical-align: middle;
-    font-size: 12px;
+    font-size: 11px;
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .homeCustomecard .item {

@@ -7,18 +7,18 @@ hereApp.service('homeService', ['proxyService', function(proxyService) {
             'type': 'static',
             'heading': 'Dineout Places Nearby',
             'filters': [
-                { 'imgPath': 'img/icons/delivery.svg', 'name': 'Delivery' },
+                // { 'imgPath': 'img/icons/delivery.svg', 'name': 'Delivery' },
                 { 'imgPath': 'img/icons/egg.svg', 'name': 'Breakfast' },
                 { 'imgPath': 'img/icons/lunch.svg', 'name': 'Lunch' },
                 { 'imgPath': 'img/icons/dinner.svg', 'name': 'Dinner' },
                 { 'imgPath': 'img/icons/coffee.svg', 'name': 'Cafe' },
-                { 'imgPath': 'img/icons/drink.svg', 'name': 'Night Life' },
+                // { 'imgPath': 'img/icons/drink.svg', 'name': 'Night Life' },
                 { 'imgPath': 'img/icons/beer.svg', 'name': 'Bar' },
                 { 'imgPath': 'img/icons/hours.svg', 'name': 'Happy Hours' },
                 { 'imgPath': 'img/icons/sweet.svg', 'name': 'Sweets' },
-                { 'imgPath': 'img/icons/chicken.svg', 'name': 'Indian Cuisine' },
+                // { 'imgPath': 'img/icons/chicken.svg', 'name': 'Indian Cuisine' },
                 { 'imgPath': 'img/icons/chinese.svg', 'name': 'Chinese' },
-                { 'imgPath': 'img/icons/burger.svg', 'name': 'Fast Food' }
+                // { 'imgPath': 'img/icons/burger.svg', 'name': 'Fast Food' }
             ]
         },
         'Essentials': {
