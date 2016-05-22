@@ -53,6 +53,9 @@
                             <div class="item item-text-wrap">
                                 <img src="img/icons/egg.svg" alt="">
                                 <h4>Breakfast</h4>
+                            <div class="item item-text-wrap" ng-click="getDetails(item.filters[i].name)">
+                                <img ng-src="{{item.filters[i].imgPath}}" alt="">
+                                <h4>{{item.filters[i].name}}</h4>
                                 <i class="ion-ios-arrow-right pull-right rightIcon"></i>
                             </div>
                         </div>
@@ -87,20 +90,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <<<<<<< HEAD
-                <div ng-if="item.type == 'slide'">
-                    <ion-slide-box on-slide-changed="slideChanged(index)" auto-play="false" show-pager="true" does-continue="false">
-                        <ion-slide ng-repeat="filters in item.filters" ng-if="$index % 4 == 0">
-                            <div class="row">
-                                <div class="col-25" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]">
-                                    <div class="card homeCustomecard">
-                                        <div class="item item-text-wrap">
-                                            <img ng-src="{{item.filters[i].imgPath}}" alt="">
-                                            <h4>{{item.filters[i].name}}</h4>
-                                        </div>
-                                    </div>
-                                </div>
-======= -->
+                
                 <div class="row">
                     <div class="col-50">
                         <div class="card homeCustomecard">
@@ -202,18 +192,5 @@
                     </div>
                 </div>
             </div>
-            <!-- <div ng-repeat="item in homeService.searchFilterGroup">
-                <h4 class="meal text-center">{{item.heading}}</h4>
-                <!-- <div ng-if="item.type != 'slide'"> 
-            <div class="row" ng-repeat="filters in item.filters" ng-if="$index % 4 == 0">
-                <div class="col-25" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]">
-                    <div class="card homeCustomecard">
-                        <div class="item item-text-wrap" ng-click="getDetails(item.filters[i].name)">
-                            <img ng-src="{{item.filters[i].imgPath}}" alt="">
-                            <h4>{{item.filters[i].name}}</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
     </ion-content>
 </ion-view>

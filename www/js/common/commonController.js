@@ -1,11 +1,11 @@
 'use strict'
-hereApp.controller('commonController', ['$scope', '$state','hereAppConstant', 'commonService', '$ionicPopover', '$ionicHistory', '$ionicSideMenuDelegate', '$ionicModal',
-    function($scope, $state,hereAppConstant,commonService, $ionicPopover, $ionicHistory, $ionicSideMenuDelegate, $ionicModal) {
+hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', 'commonService', '$ionicPopover', '$ionicHistory', '$ionicSideMenuDelegate', '$ionicModal',
+    function($scope, $state, hereAppConstant, commonService, $ionicPopover, $ionicHistory, $ionicSideMenuDelegate, $ionicModal) {
         $scope.commonService = commonService;
         // if needed to apply something for all route change
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 
-        })
+            })
             //grant location access
         accessUserLoationData();
 
@@ -14,7 +14,7 @@ hereApp.controller('commonController', ['$scope', '$state','hereAppConstant', 'c
             $ionicHistory.goBack();
         };
 
-        
+
         $scope.toggleGroup = function(group) {
             //$event.preventDefault();
             if ($scope.isGroupShown(group)) {
@@ -48,7 +48,9 @@ hereApp.controller('commonController', ['$scope', '$state','hereAppConstant', 'c
 
         // popovers option
         $ionicPopover.fromTemplateUrl('partials/common/popover-menu.html', {
-            scope: $scope
+            scope: $scope,
+            backdropClickToClose: true,
+
         }).then(function(popover) {
             $scope.popover = popover;
         });
@@ -96,47 +98,47 @@ hereApp.controller('commonController', ['$scope', '$state','hereAppConstant', 'c
             });
         }
 
-        
+
         //******************** Below code is for locaiton search and select functionality ************//
-        
-        $scope.getPlaceAutoCompleteData = function(searchText){
-            if(searchText != ''){           
+
+        $scope.getPlaceAutoCompleteData = function(searchText) {
+            if (searchText != '') {
                 var param = createGetPlaceAutoCompleteParam(searchText);
                 return $scope.commonService.proxyService.callWS($scope.commonService.proxyService.getPlaceAutoComplete, param)
-                    .then(function(data){
-                        if(data.status == "OK"){
+                    .then(function(data) {
+                        if (data.status == "OK") {
                             return data.predictions;
                         }
-                    },function(eror){
+                    }, function(eror) {
                         throw error;
                     })
             }
         }
 
-        var createGetPlaceAutoCompleteParam = function(searchText){
-            return{
-                'input':searchText,
-                'components':'country:'+$scope.commonService.userData.country
+        var createGetPlaceAutoCompleteParam = function(searchText) {
+            return {
+                'input': searchText,
+                'components': 'country:' + $scope.commonService.userData.country
             }
         }
 
-        $scope.selectedItemChange = function(item){
-            if(typeof item === 'object'){
+        $scope.selectedItemChange = function(item) {
+            if (typeof item === 'object') {
                 $scope.commonService.userData.location = item.description;
-                var param = {'placeid': item.place_id};
+                var param = { 'placeid': item.place_id };
                 $scope.commonService.proxyService.callWS($scope.commonService.proxyService.getPlaceDetails, param)
-                    .then(function(data){
-                        if(data.status == "OK"){
-                            $scope.commonService.userData.userPostion = data.result.geometry.location;                            
+                    .then(function(data) {
+                        if (data.status == "OK") {
+                            $scope.commonService.userData.userPostion = data.result.geometry.location;
                             var countryData = _.find(data.result.address_components, { 'types': ["country"] });
                             if (countryData)
                                 $scope.commonService.userData.country = countryData.short_name;
                         }
-                    },function(eror){
+                    }, function(eror) {
                         throw error;
                     })
             }
-            
+
         }
     }
 ])
