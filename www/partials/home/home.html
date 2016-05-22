@@ -27,7 +27,7 @@
                 <div class="list">
                     <label class="item item-input">
                         <i class="icon ion-location placeholder-icon"></i>
-                        <md-autocomplete md-selected-item="commonService.userData.location" md-search-text="searchText" md-items="item in getPlaceAutoCompleteData(searchText)" md-item-text="item.description" md-selected-item-change="selectedItemChange(item)" md-min-length="2" md-no-cache="true" placeholder="Choose Your Location" md-autofocus="true">
+                        <md-autocomplete md-selected-item="commonService.userData.location" md-search-text="searchText" md-items="item in getPlaceAutoCompleteData(searchText)" md-item-text="item.description" md-selected-item-change="selectedItemChange(item)" md-min-length="2" md-no-cache="true" placeholder="Choose Your Location" md-autofocus="false">
                             <md-item-template>
                                 <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.description}}</span>
                             </md-item-template>
@@ -39,187 +39,166 @@
     </div>
     <ion-content class="has-header has-subheader has-footer-tab mainBg">
         <div class="mainContent">
-            <div class="dineout" ng-repeat="item in homeService.searchFilterGroup">
+            <div class="dineout">
                 <div class="meal">
                     <a href="#" class="pull-right seeMore">See More
                         <i class="ion-ios-arrow-down"></i>
                     </a>
                     <h4>
-                        <i class="ion-ios-location"></i> {{item.heading}}</h4>
+                        <i class="ion-ios-location"></i> Dineout Places Nearby</h4>
                 </div>
-                <div class="row" ng-repeat="filters in item.filters" ng-if="$index % 2 == 0">
-                    <div class="col-50" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]">
+                <div class="row">
+                    <div class="col-50">
                         <div class="card homeCustomecard">
                             <div class="item item-text-wrap">
-                                <img ng-src="{{item.filters[i].imgPath}}" alt="">
-                                <h4>{{item.filters[i].name}}</h4>
+                                <img src="img/icons/egg.svg" alt="">
+                                <h4>Breakfast</h4>
+                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-50">
+                        <div class="card homeCustomecard">
+                            <div class="item item-text-wrap">
+                                <img src="img/icons/lunch.svg" alt="">
+                                <h4>Lunch</h4>
+                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-50">
+                        <div class="card homeCustomecard">
+                            <div class="item item-text-wrap">
+                                <img src="img/icons/coffee.svg" alt="">
+                                <h4>Cafe</h4>
+                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-50">
+                        <div class="card homeCustomecard">
+                            <div class="item item-text-wrap">
+                                <img src="img/icons/dinner.svg" alt="">
+                                <h4>Dinner</h4>
+                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <<<<<<< HEAD
+                <div ng-if="item.type == 'slide'">
+                    <ion-slide-box on-slide-changed="slideChanged(index)" auto-play="false" show-pager="true" does-continue="false">
+                        <ion-slide ng-repeat="filters in item.filters" ng-if="$index % 4 == 0">
+                            <div class="row">
+                                <div class="col-25" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]">
+                                    <div class="card homeCustomecard">
+                                        <div class="item item-text-wrap">
+                                            <img ng-src="{{item.filters[i].imgPath}}" alt="">
+                                            <h4>{{item.filters[i].name}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+======= -->
+                <div class="row">
+                    <div class="col-50">
+                        <div class="card homeCustomecard">
+                            <div class="item item-text-wrap">
+                                <img src="img/icons/drink.svg" alt="">
+                                <h4>Drinks & Night life</h4>
+                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-50">
+                        <div class="card homeCustomecard">
+                            <div class="item item-text-wrap">
+                                <img src="img/icons/beer.svg" alt="">
+                                <h4>Bar</h4>
+                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-50">
+                        <div class="card homeCustomecard">
+                            <div class="item item-text-wrap">
+                                <img src="img/icons/chinese.svg" alt="">
+                                <h4>Chinese</h4>
                                 <i class="ion-ios-arrow-right pull-right rightIcon"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="misc">
-                <div class="sectional text-center">
+            <div class="dineout">
+                <div class="meal">
+                    <a href="#" class="pull-right seeMore">See More
+                        <i class="ion-ios-arrow-down"></i>
+                    </a>
                     <h4>
-                        Popular Places Nearby</h4>
+                        <i class="ion-ios-location"></i> Essentials Places Nearby</h4>
                 </div>
-                <div class="misclneous">
-                    <h5 class="text-center">Places to go party & fun</h5>
-                    <h6 class="text-center">Theme Park, Nightlife</h6>
-                    <div class="row">
-                        <div class="col-33">
-                            <div class="card miscCard">
-                                <div class="popularFun">
-                                    <img src="img/images/tantra.jpg" alt="">
-                                    <span class="rating good">3.4</span>
-                                </div>
-                                <h3>Tantra, The Lounge</h3>
-                                <h4>Park Street, 71</h4>
-                                <h4>Nightlife, Disco</h4>
-                            </div>
-                        </div>
-                        <div class="col-33">
-                            <div class="card miscCard">
-                                <div class="popularFun">
-                                    <img src="img/images/nicopark.jpg" alt="">
-                                    <span class="rating avg">3.4</span>
-                                </div>
-                                <h3>Nicco park</h3>
-                                <h4>Park Street, 71</h4>
-                                <h4>Nightlife, Disco</h4>
-                            </div>
-                        </div>
-                        <div class="col-33">
-                            <div class="card miscCard">
-                                <div class="popularFun">
-                                    <img src="img/images/nicopark.jpg" alt="">
-                                    <span class="rating poor">3.4</span>
-                                </div>
-                                <h3>Nicco park</h3>
-                                <h4>Park Street, 71</h4>
-                                <h4>Nightlife, Disco</h4>
+                <div class="row">
+                    <div class="col-50">
+                        <div class="card homeCustomecard">
+                            <div class="item item-text-wrap">
+                                <img src="img/icons/atm.svg" alt="">
+                                <h4>ATM</h4>
+                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-33">
-                            <div class="card miscCard">
-                                <div class="popularFun">
-                                    <img src="img/images/aquatica.jpg" alt="">
-                                    <span class="rating verygood">3.4</span>
-                                </div>
-                                <h3>Tantra, The Lounge</h3>
-                                <h4>Park Street, 71</h4>
-                                <h4>Nightlife, Disco</h4>
+                    <div class="col-50">
+                        <div class="card homeCustomecard">
+                            <div class="item item-text-wrap">
+                                <img src="img/icons/blood.svg" alt="">
+                                <h4>Blood bank</h4>
+                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
                             </div>
                         </div>
-                        <div class="col-33">
-                            <div class="card miscCard">
-                                <div class="popularFun">
-                                    <img src="img/images/nicopark.jpg" alt="">
-                                    <span class="rating">3.4</span>
-                                </div>
-                                <h3>Nicco park</h3>
-                                <h4>Park Street, 71</h4>
-                                <h4>Nightlife, Disco</h4>
-                            </div>
-                        </div>
-                        <div class="col-33">
-                            <div class="card miscCard">
-                                <div class="popularFun">
-                                    <img src="img/images/nicopark.jpg" alt="">
-                                    <span class="rating">3.4</span>
-                                </div>
-                                <h3>Nicco park</h3>
-                                <h4>Park Street, 71</h4>
-                                <h4>Nightlife, Disco</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seeAll">
-                        <a href="#">See All
-                            <i class="ion-ios-arrow-right pull-right"></i>
-                        </a>
                     </div>
                 </div>
-                <div class="misclneous">
-                    <h5 class="text-center">Places to go for Shopping</h5>
-                    <h6 class="text-center">Shopping Mall, Jewelry, Supermarket</h6>
-                    <div class="row">
-                        <div class="col-33">
-                            <div class="card miscCard">
-                                <div class="popularFun">
-                                    <img src="img/images/b_img.jpg" alt="">
-                                    <span class="rating">3.4</span>
-                                </div>
-                                <h3>Tantra, The Lounge</h3>
-                                <h4>Park Street, 71</h4>
-                                <h4>Nightlife, Disco</h4>
-                            </div>
-                        </div>
-                        <div class="col-33">
-                            <div class="card miscCard">
-                                <div class="popularFun">
-                                    <img src="img/images/b_img.jpg" alt="">
-                                    <span class="rating poor">3.4</span>
-                                </div>
-                                <h3>Nicco park</h3>
-                                <h4>Park Street, 71</h4>
-                                <h4>Nightlife, Disco</h4>
-                            </div>
-                        </div>
-                        <div class="col-33">
-                            <div class="card miscCard">
-                                <div class="popularFun">
-                                    <img src="img/images/b_img.jpg" alt="">
-                                    <span class="rating avg">3.4</span>
-                                </div>
-                                <h3>Nicco park</h3>
-                                <h4>Park Street, 71</h4>
-                                <h4>Nightlife, Disco</h4>
+                <div class="row">
+                    <div class="col-50">
+                        <div class="card homeCustomecard">
+                            <div class="item item-text-wrap">
+                                <img src="img/icons/lunch.svg" alt="">
+                                <h4>Lunch</h4>
+                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-33">
-                            <div class="card miscCard">
-                                <div class="popularFun">
-                                    <img src="img/images/b_img.jpg" alt="">
-                                    <span class="rating good">3.4</span>
-                                </div>
-                                <h3>Tantra, The Lounge</h3>
-                                <h4>Park Street, 71</h4>
-                                <h4>Nightlife, Disco</h4>
-                            </div>
-                        </div>
-                        <div class="col-33">
-                            <div class="card miscCard">
-                                <div class="popularFun">
-                                    <img src="img/images/b_img.jpg" alt="">
-                                    <span class="rating verygood">3.4</span>
-                                </div>
-                                <h3>Nicco park</h3>
-                                <h4>Park Street, 71</h4>
-                                <h4>Nightlife, Disco</h4>
-                            </div>
-                        </div>
-                        <div class="col-33">
-                            <div class="card miscCard">
-                                <div class="popularFun">
-                                    <img src="img/images/b_img.jpg" alt="">
-                                    <span class="rating">3.4</span>
-                                </div>
-                                <h3>Nicco park</h3>
-                                <h4>Park Street, 71</h4>
-                                <h4>Nightlife, Disco</h4>
+                    <div class="col-50">
+                        <div class="card homeCustomecard">
+                            <div class="item item-text-wrap">
+                                <img src="img/icons/dinner.svg" alt="">
+                                <h4>Dinner</h4>
+                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="seeAll">
-                        <a href="#">See All
-                            <i class="ion-ios-arrow-right pull-right"></i>
-                        </a>
+                </div>
+                <div class="row">
+                    <div class="col-50">
+                        <div class="card homeCustomecard">
+                            <div class="item item-text-wrap">
+                                <img src="img/icons/coffee.svg" alt="">
+                                <h4>Cafe</h4>
+                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-50">
+                        <div class="card homeCustomecard">
+                            <div class="item item-text-wrap">
+                                <img src="img/icons/drink.svg" alt="">
+                                <h4>Drinks & Night life</h4>
+                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
