@@ -27,7 +27,7 @@
                 <div class="list">
                     <label class="item item-input">
                         <i class="icon ion-location placeholder-icon"></i>
-                        <md-autocomplete md-selected-item="commonService.userData.location" md-search-text="searchText" md-items="item in getPlaceAutoCompleteData(searchText)" md-item-text="item.description" md-selected-item-change="selectedItemChange(item)" md-min-length="2" md-no-cache="true" placeholder="Choose Your Location" md-autofocus="false">
+                        <md-autocomplete md-selected-item="commonService.userData.location" md-search-text="searchText" md-items="item in getPlaceAutoCompleteData(searchText)" md-item-text="item.description" md-selected-item-change="selectedItemChange(item)" md-min-length="2" md-no-cache="true" placeholder="Choose Your Location" md-autofocus="true">
                             <md-item-template>
                                 <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.description}}</span>
                             </md-item-template>
@@ -39,192 +39,20 @@
     </div>
     <ion-content class="has-header has-subheader has-footer-tab mainBg">
         <div class="mainContent">
-            <div class="dineout">
+            <div class="dineout" ng-repeat="item in homeService.searchFilterGroup">
                 <div class="meal">
                     <a href="#" class="pull-right seeMore">See More
                         <i class="ion-ios-arrow-down"></i>
                     </a>
                     <h4>
-                        <i class="ion-ios-location"></i> Dineout Places Nearby</h4>
+                        <i class="ion-ios-location"></i> {{item.heading}}</h4>
                 </div>
-                <div class="row">
-                    <div class="col-50">
+                <div class="row" ng-repeat="filters in item.filters" ng-if="$index % 2 == 0">
+                    <div class="col-50" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]">
                         <div class="card homeCustomecard">
                             <div class="item item-text-wrap">
-                                <img src="img/icons/egg.svg" alt="">
-                                <h4>Breakfast</h4>
-                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-50">
-                        <div class="card homeCustomecard">
-                            <div class="item item-text-wrap">
-                                <img src="img/icons/lunch.svg" alt="">
-                                <h4>Lunch</h4>
-                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-50">
-                        <div class="card homeCustomecard">
-                            <div class="item item-text-wrap">
-                                <img src="img/icons/coffee.svg" alt="">
-                                <h4>Cafe</h4>
-                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-50">
-                        <div class="card homeCustomecard">
-                            <div class="item item-text-wrap">
-                                <img src="img/icons/dinner.svg" alt="">
-                                <h4>Dinner</h4>
-                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <<<<<<< HEAD
-                <div ng-if="item.type == 'slide'">
-                    <ion-slide-box on-slide-changed="slideChanged(index)" auto-play="false" show-pager="true" does-continue="false">
-                        <ion-slide ng-repeat="filters in item.filters" ng-if="$index % 4 == 0">
-                            <div class="row">
-                                <div class="col-25" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]">
-                                    <div class="card homeCustomecard">
-                                        <div class="item item-text-wrap">
-                                            <img ng-src="{{item.filters[i].imgPath}}" alt="">
-                                            <h4>{{item.filters[i].name}}</h4>
-                                        </div>
-                                    </div>
-                                </div>
-======= -->
-                <div class="row">
-                    <div class="col-50">
-                        <div class="card homeCustomecard">
-                            <div class="item item-text-wrap">
-                                <img src="img/icons/drink.svg" alt="">
-                                <h4>Drinks & Night life</h4>
-                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-50">
-                        <div class="card homeCustomecard">
-                            <div class="item item-text-wrap">
-                                <img src="img/icons/beer.svg" alt="">
-                                <h4>Bar</h4>
-                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-50">
-                        <div class="card homeCustomecard">
-                            <div class="item item-text-wrap">
-                                <img src="img/icons/chinese.svg" alt="">
-                                <h4>Chinese</h4>
-                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-50">
-                        <div class="card homeCustomecard">
-                            <div class="item item-text-wrap">
-                                <img src="img/icons/sweet.svg" alt="">
-                                <h4>Sweet & Pastry</h4>
-                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="dineout">
-                <div class="meal">
-                    <a href="#" class="pull-right seeMore">See More
-                        <i class="ion-ios-arrow-down"></i>
-                    </a>
-                    <h4>
-                        <i class="ion-ios-location"></i> Essentials Places Nearby</h4>
-                </div>
-                <div class="row">
-                    <div class="col-50">
-                        <div class="card homeCustomecard">
-                            <div class="item item-text-wrap">
-                                <img src="img/icons/atm.svg" alt="">
-                                <h4>ATM</h4>
-                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-50">
-                        <div class="card homeCustomecard">
-                            <div class="item item-text-wrap">
-                                <img src="img/icons/blood.svg" alt="">
-                                <h4>Blood bank</h4>
-                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-50">
-                        <div class="card homeCustomecard">
-                            <div class="item item-text-wrap">
-                                <img src="img/icons/hospital.svg" alt="">
-                                <h4>Hospitals</h4>
-                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-50">
-                        <div class="card homeCustomecard">
-                            <div class="item item-text-wrap">
-                                <img src="img/icons/bank.svg" alt="">
-                                <h4>Bank</h4>
-                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-50">
-                        <div class="card homeCustomecard">
-                            <div class="item item-text-wrap">
-                                <img src="img/icons/book.svg" alt="">
-                                <h4>Library</h4>
-                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-50">
-                        <div class="card homeCustomecard">
-                            <div class="item item-text-wrap">
-                                <img src="img/icons/medicine.svg" alt="">
-                                <h4>Pharmacy</h4>
-                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-50">
-                        <div class="card homeCustomecard">
-                            <div class="item item-text-wrap">
-                                <img src="img/icons/police.svg" alt="">
-                                <h4>Police Station</h4>
-                                <i class="ion-ios-arrow-right pull-right rightIcon"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-50">
-                        <div class="card homeCustomecard">
-                            <div class="item item-text-wrap">
-                                <img src="img/icons/car-repair.svg" alt="">
-                                <h4>Car Repair</h4>
+                                <img ng-src="{{item.filters[i].imgPath}}" alt="">
+                                <h4>{{item.filters[i].name}}</h4>
                                 <i class="ion-ios-arrow-right pull-right rightIcon"></i>
                             </div>
                         </div>
