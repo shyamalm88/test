@@ -13,7 +13,8 @@ hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultS
                 .then(function(data) {
                     if (data.status == "OK") {
                         $scope.searchResultData = data.results;
-                        console.log(data.results);
+                        //console.log(data.results);
+
                     }
                 }, function(eror) {
                     throw error;
