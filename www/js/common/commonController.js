@@ -92,7 +92,9 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
                         var countryData = _.find(results[0].address_components, { 'types': ["country"] });
                         if (countryData)
                             $scope.commonService.userData.country = countryData.short_name;
-                        $scope.commonService.userData.location = results[0].formatted_address;
+                        //$scope.commonService.userData.location = results[0].formatted_address;
+                        $scope.commonService.userData.location = results[0].address_components[0].short_name + ', ' + results[0].address_components[1].short_name + ', ' + results[0].address_components[2].short_name;
+                        console.log(results[0])
                     }
                 }
             });
