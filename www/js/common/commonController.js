@@ -1,13 +1,15 @@
 'use strict'
-hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', 'commonService', '$ionicPopover', '$ionicHistory', '$ionicSideMenuDelegate', '$ionicModal',
-    function($scope, $state, hereAppConstant, commonService, $ionicPopover, $ionicHistory, $ionicSideMenuDelegate, $ionicModal) {
-        $scope.commonService = commonService;
-        // if needed to apply something for all route change
+hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', 'getUserLocationService', '$ionicPopover', '$ionicHistory', '$ionicSideMenuDelegate', '$ionicModal',
+    function($scope, $state, hereAppConstant, getUserLocationService, $ionicPopover, $ionicHistory, $ionicSideMenuDelegate, $ionicModal) {
+        //$scope.commonService = commonService;
+        $scope.getUserLocationService = getUserLocationService
+            // if needed to apply something for all route change
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 
             })
             //grant location access
-        accessUserLoationData();
+        $scope.getUserLocationService.accessUserLoationData();
+
 
         //go back with cache
         $scope.prev = function() {
@@ -64,39 +66,29 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
             $ionicSideMenuDelegate.toggleRight();
         };
 
-        function accessUserLoationData() {
-            // Get the most accurate position updates available on the device.
-            var options = { enableHighAccuracy: true, timeout: 30000 };
-            navigator.geolocation.watchPosition(onGetLocationSuccess, onGetLocationError, options);
-        }
+        // function accessUserLoationData() {
+        //     // Get the most accurate position updates available on the device.
+        //     var options = { enableHighAccuracy: true, timeout: 30000 };
+        //     navigator.geolocation.watchPosition(onGetLocationSuccess, onGetLocationError, options);
+        // }
 
-        // onSuccess Geolocation
-        //
-        function onGetLocationSuccess(position) {
-            $scope.commonService.userData.userPostion = { 'lat': position.coords.latitude, 'lng': position.coords.longitude };
-            getUserLocationDetails($scope.commonService.userData.userPostion);
-        }
+        // // onSuccess Geolocation
+        // //
+        // function onGetLocationSuccess(position) {
+        //     $scope.commonService.userData.userPostion = { 'lat': position.coords.latitude, 'lng': position.coords.longitude };
+        //     getUserLocationDetails($scope.commonService.userData.userPostion);
+        // }
 
-        // onError Callback receives a PositionError object
-        function onGetLocationError(error) {
-            //alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
-        }
+        // // onError Callback receives a PositionError object
+        // function onGetLocationError(error) {
+        //     //alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+        // }
+
+
 
 
         // reverse geocoding to get location, country etc
-        function getUserLocationDetails(latLng) {
-            var geocoder = new google.maps.Geocoder();
-            geocoder.geocode({ 'latLng': latLng }, function(results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    if (results[0]) {
-                        var countryData = _.find(results[0].address_components, { 'types': ["country"] });
-                        if (countryData)
-                            $scope.commonService.userData.country = countryData.short_name;
-                        $scope.commonService.userData.location = results[0].formatted_address;
-                    }
-                }
-            });
-        }
+
 
 
         //******************** Below code is for locaiton search and select functionality ************//
@@ -104,7 +96,7 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
         $scope.getPlaceAutoCompleteData = function(searchText) {
             if (searchText != '') {
                 var param = createGetPlaceAutoCompleteParam(searchText);
-                return $scope.commonService.proxyService.callWS($scope.commonService.proxyService.getPlaceAutoComplete, param)
+                return $scope.getUserLocationService.proxyService.callWS($scope.getUserLocationService.proxyService.getPlaceAutoComplete, param)
                     .then(function(data) {
                         if (data.status == "OK") {
                             return data.predictions;
@@ -118,21 +110,21 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
         var createGetPlaceAutoCompleteParam = function(searchText) {
             return {
                 'input': searchText,
-                'components': 'country:' + $scope.commonService.userData.country
+                'components': 'country:' + $scope.getUserLocationService.userData.country
             }
         }
 
         $scope.selectedItemChange = function(item) {
             if (typeof item === 'object') {
-                $scope.commonService.userData.location = item.description;
+                $scope.getUserLocationService.userData.location = item.description;
                 var param = { 'placeid': item.place_id };
-                $scope.commonService.proxyService.callWS($scope.commonService.proxyService.getPlaceDetails, param)
+                $scope.getUserLocationService.proxyService.callWS($scope.getUserLocationService.proxyService.getPlaceDetails, param)
                     .then(function(data) {
                         if (data.status == "OK") {
-                            $scope.commonService.userData.userPostion = data.result.geometry.location;
+                            $scope.getUserLocationService.userData.userPostion = data.result.geometry.location;
                             var countryData = _.find(data.result.address_components, { 'types': ["country"] });
                             if (countryData)
-                                $scope.commonService.userData.country = countryData.short_name;
+                                $scope.getUserLocationService.userData.country = countryData.short_name;
                         }
                     }, function(eror) {
                         throw error;
