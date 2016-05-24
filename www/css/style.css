@@ -552,3 +552,9 @@ body {
 .seeAll a:hover {
     color: #2657E5;
 }
+
+#mapLocation {
+    width: 100%;
+    height: 240px;
+    margin-top: -20px;
+}
