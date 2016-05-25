@@ -8,16 +8,16 @@ hereApp.service('homeService', ['proxyService', function(proxyService) {
             'heading': 'Dineout Places Nearby',
             'filters': [
                 // { 'imgPath': 'img/icons/delivery.svg', 'name': 'Delivery' },
-                { 'imgPath': 'img/icons/egg.svg', 'name': 'Breakfast' },
-                { 'imgPath': 'img/icons/lunch.svg', 'name': 'Lunch' },
-                { 'imgPath': 'img/icons/dinner.svg', 'name': 'Dinner' },
-                { 'imgPath': 'img/icons/coffee.svg', 'name': 'Cafe' },
+                { 'imgPath': 'img/icons/egg.svg', 'name': 'Breakfast', 'type': 'bakery' },
+                { 'imgPath': 'img/icons/lunch.svg', 'name': 'Lunch', 'type': 'restaurant' },
+                { 'imgPath': 'img/icons/dinner.svg', 'name': 'Dinner', 'type': 'restaurant' },
+                { 'imgPath': 'img/icons/coffee.svg', 'name': 'Cafe', 'type': 'cafe' },
                 // { 'imgPath': 'img/icons/drink.svg', 'name': 'Night Life' },
-                { 'imgPath': 'img/icons/beer.svg', 'name': 'Bar' },
-                { 'imgPath': 'img/icons/hours.svg', 'name': 'Happy Hours' },
-                { 'imgPath': 'img/icons/sweet.svg', 'name': 'Sweets' },
+                { 'imgPath': 'img/icons/beer.svg', 'name': 'Bar', 'type': 'bar' },
+                { 'imgPath': 'img/icons/hours.svg', 'name': 'Happy Hours', 'type': 'bar' },
+                { 'imgPath': 'img/icons/sweet.svg', 'name': 'Sweets', 'type': 'bakery' },
                 // { 'imgPath': 'img/icons/chicken.svg', 'name': 'Indian Cuisine' },
-                { 'imgPath': 'img/icons/chinese.svg', 'name': 'Chinese' },
+                { 'imgPath': 'img/icons/chinese.svg', 'name': 'Chinese', 'type': 'restaurant' },
                 // { 'imgPath': 'img/icons/burger.svg', 'name': 'Fast Food' }
             ]
         },
@@ -25,30 +25,30 @@ hereApp.service('homeService', ['proxyService', function(proxyService) {
             'type': 'static',
             'heading': 'Essentials Places Nearby',
             'filters': [
-                { 'imgPath': 'img/icons/atm.svg', 'name': 'ATM' },
-                { 'imgPath': 'img/icons/blood.svg', 'name': 'Blood Bank' },
-                { 'imgPath': 'img/icons/bank.svg', 'name': 'Bank' },
-                { 'imgPath': 'img/icons/hospital.svg', 'name': 'Hospital' },
-                { 'imgPath': 'img/icons/police.svg', 'name': 'Police Station' },
-                { 'imgPath': 'img/icons/medicine.svg', 'name': 'Pharmacy' },
-                { 'imgPath': 'img/icons/book.svg', 'name': 'Library' },
-                { 'imgPath': 'img/icons/car-repair.svg', 'name': 'Car Repair' }
+                { 'imgPath': 'img/icons/atm.svg', 'name': 'ATM', 'type': 'atm' },
+                { 'imgPath': 'img/icons/blood.svg', 'name': 'Blood Bank', 'type': 'bakery' },
+                { 'imgPath': 'img/icons/bank.svg', 'name': 'Bank', 'type': 'bank' },
+                { 'imgPath': 'img/icons/hospital.svg', 'name': 'Hospital', 'type': 'hospital' },
+                { 'imgPath': 'img/icons/police.svg', 'name': 'Police Station', 'type': 'police' },
+                { 'imgPath': 'img/icons/medicine.svg', 'name': 'Pharmacy', 'type': 'pharmacy' },
+                { 'imgPath': 'img/icons/book.svg', 'name': 'Library', 'type': 'book_store' },
+                { 'imgPath': 'img/icons/car-repair.svg', 'name': 'Car Repair', 'type': 'car_repair' }
             ]
         },
         'Entertainment': {
             'type': 'slide',
             'heading': 'Fun & Entertainment Places Nearby',
             'filters': [
-                { 'imgPath': 'img/icons/theater.svg', 'name': 'Movie/Theater' },
-                { 'imgPath': 'img/icons/stadium.svg', 'name': 'Stadium' },
-                { 'imgPath': 'img/icons/horse.svg', 'name': 'Race Course' },
+                { 'imgPath': 'img/icons/theater.svg', 'name': 'Movie/Theater', 'type': 'movie_theater' },
+                { 'imgPath': 'img/icons/stadium.svg', 'name': 'Stadium', 'type': 'stadium' },
+                { 'imgPath': 'img/icons/horse.svg', 'name': 'Race Course', 'type': 'bakery' },
                 // { 'imgPath': 'img/icons/theme-park.svg', 'name': 'Fun Park' },
-                { 'imgPath': 'img/icons/art.svg', 'name': 'Art Gallery' },
-                { 'imgPath': 'img/icons/museum.svg', 'name': 'Museum' },
+                { 'imgPath': 'img/icons/art.svg', 'name': 'Art Gallery', 'type': 'art_gallery' },
+                { 'imgPath': 'img/icons/museum.svg', 'name': 'Museum', 'type': 'museum' },
                 // { 'imgPath': 'img/icons/disco.svg', 'name': 'Night Club' },
-                { 'imgPath': 'img/icons/casino.svg', 'name': 'Casino' },
-                { 'imgPath': 'img/icons/bowling.svg', 'name': 'Bowling Alley' },
-                { 'imgPath': 'img/icons/zoo.svg', 'name': 'Zoo' }
+                { 'imgPath': 'img/icons/casino.svg', 'name': 'Casino', 'type': 'casino' },
+                { 'imgPath': 'img/icons/bowling.svg', 'name': 'Bowling Alley', 'type': 'bowling_alley' },
+                { 'imgPath': 'img/icons/zoo.svg', 'name': 'Zoo', 'type': 'zoo' }
                 // { 'imgPath': 'img/icons/community.svg', 'name': 'City Hall' },
                 // { 'imgPath': 'img/icons/park.svg', 'name': 'Park' }
             ]
