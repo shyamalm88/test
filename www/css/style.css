@@ -558,3 +558,29 @@ body {
     height: 240px;
     margin-top: -20px;
 }
+
+.searchResults .address{
+    color:#777;
+}
+
+.searchResults .address span{
+    display:block;
+    overflow:hidden;
+}
+.searchResults .address i{
+    font-size:14px;
+    float:left;
+    margin-right:5px;
+}
+.searchResults{
+    position:relative;
+}
+.searchResults .rating{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 4px 6px;
+    color: #fff;
+    background: green;
+    border-radius: 2px 0px 0px 2px;
+}
