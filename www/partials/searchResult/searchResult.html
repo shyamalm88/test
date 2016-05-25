@@ -15,7 +15,7 @@
     </ion-nav-bar>
     <ion-content class="has-header has-footer-tab mainBg">
         <div class="mainContent">
-            <div id="mapLocation"></div>
+            <here-app-map map-data = "searchResultData" show-pins="true"></here-app-map>
             <div ng-repeat="result in searchResultData">
                 <div class="card">
                     <div class="item item-text-wrap">
@@ -24,6 +24,9 @@
                         <h5 class="rating">Rating: {{result.rating}}</h5>
                     </div>
                 </div>
+            </div>
+            <div class="button button-positive button-block" ng-click="getNearByData(searchedType)" ng-if="hasMoreData">
+                    Load More
             </div>
         </div>
     </ion-content>

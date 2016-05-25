@@ -28,7 +28,7 @@
                 <div class="list">
                     <label class="item item-input">
                         <i class="icon ion-location placeholder-icon"></i>
-                        <md-autocomplete md-selected-item="getUserLocationService.userData.location" md-search-text="searchText" md-items="item in getPlaceAutoCompleteData(searchText)" md-item-text="item.description" md-selected-item-change="selectedItemChange(item)" md-min-length="2" md-no-cache="true" placeholder="Choose Your Location" md-autofocus="false">
+                        <md-autocomplete md-selected-item="commonService.userData.location" md-search-text="searchText" md-items="item in getPlaceAutoCompleteData(searchText)" md-item-text="item.description" md-selected-item-change="selectedItemChange(item)" md-min-length="2" md-no-cache="true" placeholder="Choose Your Location" md-autofocus="false">
                             <md-item-template>
                                 <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.description}}</span>
                             </md-item-template>
@@ -49,9 +49,9 @@
                         <i class="ion-ios-location"></i> {{item.heading}}</h4>
                 </div>
                 <div class="row" ng-repeat="filters in item.filters" ng-if="$index % 2 == 0">
-                    <div class="col-50" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]">
+                    <div class="col-50" ng-repeat="i in [$index, $index + 1]">
                         <div class="card homeCustomecard">
-                            <div class="item item-text-wrap" ng-click="getDetails(item.filters[i].name)">
+                            <div class="item item-text-wrap" ng-click="getDetails(item.filters[i].type)">
                                 <img ng-src="{{item.filters[i].imgPath}}" alt="">
                                 <h4>{{item.filters[i].name}}</h4>
                                 <i class="ion-ios-arrow-right pull-right rightIcon"></i>
