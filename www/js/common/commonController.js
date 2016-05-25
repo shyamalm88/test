@@ -134,7 +134,7 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
                             if (countryData)
                                 $scope.commonService.userData.country = countryData.short_name;
                         }
-                    }, function(eror) {
+                    }, function(error) {
                         throw error;
                     })
             }

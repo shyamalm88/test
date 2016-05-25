@@ -9,6 +9,7 @@ var express = require("express"),
 var mapApiKey = 'AIzaSyC4xjrSTD2KELiRE9a6VqFo5a7ykX8Ydw0',
 	searchApiKey = 'AIzaSyAzyPg-0q71sGRkmFLxrTaI5-zZPDr3rSA';
 
+
 // creating method for api calling
 router.post('/getNearbyData', function(req, resp){
 	
