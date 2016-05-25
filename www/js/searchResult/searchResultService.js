@@ -7,6 +7,7 @@ hereApp.service('searchResultService', ['proxyService', 'commonService', functio
         var reqObj = {};
         reqObj.location = self.commonService.userData.userPostion.lat + ',' + self.commonService.userData.userPostion.lng;
         reqObj.radius = '5000';
+        reqObj.rankby = 'prominence'; // other option rankby: distance
         reqObj.type = item.toLowerCase();
         return reqObj;
     }

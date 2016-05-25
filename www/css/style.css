@@ -558,3 +558,11 @@ body {
     height: 240px;
     margin-top: -20px;
 }
+
+.searchresults h4.address {
+    color: #777;
+}
+
+.searchresults h4 i {
+    margin-right: 10px;
+}

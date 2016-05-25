@@ -18,10 +18,11 @@
             <div id="mapLocation"></div>
             <div ng-repeat="result in searchResultData">
                 <div class="card">
-                    <div class="item item-text-wrap">
+                    <div class="item item-text-wrap searchresults">
                         <h2 class="placesName">{{result.name}}</h2>
-                        <h4 class="Address">{{result.vicinity}}</h4>
-                        <h5 class="rating">Rating: {{result.rating}}</h5>
+                        <h4 class="address">
+                            <i class="ion-ios-location" ng-show="result.vicinity"></i>{{result.vicinity}}</h4>
+                        <h5 class="rating">{{result.rating}}</h5>
                     </div>
                 </div>
             </div>
