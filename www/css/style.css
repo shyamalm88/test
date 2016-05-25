@@ -86,7 +86,7 @@ body {
 
 .bar-subheader {
     top: 43px;
-    height: 34px;
+    height: 38px;
 }
 
 .popover-backdrop.active {
@@ -319,10 +319,26 @@ body {
 }
 
 .homeCustomecard {
-    text-align: center;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.7);
     box-shadow: none;
-    margin: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 1px solid #D6D6D6;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    border-right: 1px solid #E6E6E6;
+    border-left: 1px solid #E6E6E6;
+}
+
+.homeCustomecard .item h4 {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 11px;
+    width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .homeCustomecard .item {
@@ -331,12 +347,26 @@ body {
 }
 
 .homeCustomecard img {
+<<<<<<< HEAD
     width: 60px;
     height: 60px;
     padding: 10px;
     background: #fff;
     border-radius: 50%;
     border: 1px solid rgba(2, 2, 2, 0.2);
+=======
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.homeCustomecard .rightIcon {
+    margin-top: 0px;
+    margin-right: 3px;
+>>>>>>> f9d255ae611b4323366453b3f77b68388bd3b522
 }
 
 .mainContent {
@@ -347,18 +377,26 @@ body {
     background: url("../img/bgiconic-grey.png") repeat;
 }
 
-.meal {
+.meal h4 {
     margin-bottom: 10px;
-    color: #777676;
+    color: #333;
     font-weight: normal;
     margin-left: 15px;
     margin-right: 15px;
-    margin-top: 20px;
-    border-bottom: 3px double #ccc;
     font-size: 15px;
-    padding-bottom: 10px;
-    border-top: 3px double #ccc;
-    padding-top: 10px;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 5px;
+}
+
+.meal a.seeMore {
+    margin-right: 15px;
+    font-size: 12px;
+    color: #777676;
+    text-decoration: none;
+}
+
+.meal a.seeMore:hover {
+    color: #333;
 }
 
 .meal:first-child {
@@ -367,10 +405,6 @@ body {
 
 .has-footer-tab {
     bottom: 28px;
-}
-
-.homeCustomecard .item h4 {
-    font-size: 11px;
 }
 
 .slider-pager {
@@ -383,6 +417,13 @@ body {
     margin-bottom: 5px;
 }
 
+<<<<<<< HEAD
+=======
+.dineout {
+    margin-bottom: 20px;
+}
+
+>>>>>>> f9d255ae611b4323366453b3f77b68388bd3b522
 .slider-pager .slider-pager-page {
     width: 7px;
     margin: 0px 1px;
@@ -391,3 +432,138 @@ body {
 .slider-pager .slider-pager-page i {
     font-size: 7px;
 }
+<<<<<<< HEAD
+=======
+
+.misc {
+    padding-top: 0px;
+}
+
+.misc .sectional h4 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #5A5A5A;
+}
+
+.misc h4 {
+    border-bottom: 0px;
+}
+
+.misclneous {
+    background: #fff;
+}
+
+.misclneous h5 {
+    padding-top: 20px;
+    padding-bottom: 0px;
+    margin-bottom: -3px;
+    color: #333;
+    font-weight: 500;
+    margin-top: 0px;
+}
+
+.misclneous h6 {
+    margin-right: 65px;
+    margin-left: 65px;
+    border-bottom: 1px solid #E6E6E6;
+    color: #787777;
+    padding-bottom: 10px;
+    font-weight: normal;
+}
+
+.miscCard {
+    box-shadow: none;
+    margin-top: 0px;
+}
+
+.miscCard h3 {
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 0px;
+    width: 90%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.miscCard h4 {
+    font-size: 10px;
+    font-weight: normal;
+    margin-top: 0px;
+    width: 90%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #777;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.popularFun {
+    border-radius: 4px;
+    width: 100%;
+    overflow: hidden;
+    height: 65px;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.popularFun img {
+    width: 100%;
+}
+
+.popularFun .rating {
+    position: absolute;
+    min-width: 20px;
+    min-height: 20px;
+    right: 0px;
+    top: 0px;
+    border-radius: 2px;
+    color: #fff;
+    z-index: 999;
+    background: #22A548;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 4px;
+}
+
+.popularFun .rating.good {
+    background: #22A548;
+}
+
+.popularFun .rating.avg {
+    background: #9acd32;
+}
+
+.popularFun .rating.verygood {
+    background: #5ba829;
+}
+
+.popularFun .rating.poor {
+    background: #edd614;
+}
+
+.popularFun .rating.popularFun img {
+    width: 100%;
+}
+
+.seeAll {
+    border-bottom: 1px solid #E4E4E4;
+    border-top: 1px solid #E4E4E4;
+    padding: 4px 10px;
+}
+
+.seeAll a {
+    color: #777;
+    text-decoration: none;
+    font-size: 11px;
+    display: block;
+}
+
+.seeAll a:hover {
+    color: #2657E5;
+}
+>>>>>>> f9d255ae611b4323366453b3f77b68388bd3b522
