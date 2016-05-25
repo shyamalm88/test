@@ -1,3 +1,4 @@
+
 'use strict'
 hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', 'commonService', '$ionicPopover', '$ionicHistory', '$ionicSideMenuDelegate', '$ionicModal',
     function($scope, $state, hereAppConstant, commonService, $ionicPopover, $ionicHistory, $ionicSideMenuDelegate, $ionicModal) {
@@ -109,7 +110,7 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
                         if (data.status == "OK") {
                             return data.predictions;
                         }
-                    }, function(eror) {
+                    }, function(error) {
                         throw error;
                     })
             }

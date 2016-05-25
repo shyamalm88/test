@@ -10,5 +10,4 @@ hereApp.service('searchResultService',['proxyService','commonService',function(p
 		reqObj.type = type;
 		return reqObj;
 	}
-
 }]);
