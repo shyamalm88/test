@@ -21,9 +21,8 @@ router.post('/getNearbyData', function(req, resp){
 	//sample req ==== 
 	//https://maps.googleapis.com/maps/api/place/search/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&name=cruise&key=AIzaSyAzyPg-0q71sGRkmFLxrTaI5-zZPDr3rSA
 	if(pageToken)
-		options.url = options.url+'&pagetoken'+pageToken;
-		
-		console.log(options);
+		options.url = options.url+'&pagetoken='+pageToken;
+	
 	request.get(options, function(error, response, body)	{
 		if(error)
 			resp.send(error);
@@ -41,7 +40,6 @@ router.post('/getPlaceAutoComplete', function(req, resp){
 
 	//sample req ==== 
 	//https://maps.googleapis.com/maps/api/place/autocomplete/json?key=AIzaSyCkvow9LlFNOywy8lzaekn-xROBZRsSFvU&input=sal&components=country:IN
-	
 	request.get(options, function(error, response, body)	{
 		if(error)
 			resp.send(error);
