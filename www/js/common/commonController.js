@@ -1,4 +1,3 @@
-
 'use strict'
 hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', 'commonService', '$ionicPopover', '$ionicHistory', '$ionicSideMenuDelegate', '$ionicModal',
     function($scope, $state, hereAppConstant, commonService, $ionicPopover, $ionicHistory, $ionicSideMenuDelegate, $ionicModal) {
