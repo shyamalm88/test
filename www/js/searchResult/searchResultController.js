@@ -1,22 +1,22 @@
 'use strict'
-hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultService',
-    function($scope, $state, searchResultService) {
+hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultService', 'commonService',
+    function($scope, $state, searchResultService, commonService) {
 
         $scope.searchResultService = searchResultService;
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
             $scope.getNearByData(toParams.type);
         })
-
+        // store search result data
         $scope.getNearByData = function(item) {
+            $scope.searchedType = item;
             var param = $scope.searchResultService.createReqParamForSearch(item);
-            $scope.getUserLocationService.proxyService.callWS($scope.getUserLocationService.proxyService.getNearByData, param)
+            $scope.commonService.proxyService.callWS($scope.commonService.proxyService.getNearByData, param)
                 .then(function(data) {
                     if (data.status == "OK") {
-                        $scope.searchResultData = data.results;
-                        //console.log(data.results);
-
+                        $scope.searchResultData = $scope.searchResultData ? $scope.searchResultData.concat(data.results) : data.results;
+                        $scope.hasMoreData = (data.next_page_token) ? true : false;
                     }
-                }, function(eror) {
+                }, function(error) {
                     throw error;
                 })
         }
