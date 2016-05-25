@@ -3,13 +3,11 @@ hereApp.service('searchResultService', ['proxyService', 'commonService', functio
 
     var self = this;
     self.commonService = commonService;
-    self.createReqParamForSearch = function(item) {
+    self.createReqParamForSearch = function(type) {
         var reqObj = {};
         reqObj.location = self.commonService.userData.userPostion.lat + ',' + self.commonService.userData.userPostion.lng;
         reqObj.radius = '5000';
-        reqObj.rankby = 'prominence'; // other option rankby: distance
-        reqObj.type = item.toLowerCase();
+        reqObj.type = type;
         return reqObj;
     }
-
 }]);

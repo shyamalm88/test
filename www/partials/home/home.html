@@ -1,3 +1,4 @@
+
 <ion-view view-title="Home">
     <ion-nav-bar align-title="center" class="bar-positive">
         <ion-nav-buttons side="left">
@@ -48,9 +49,9 @@
                         <i class="ion-ios-location"></i> {{item.heading}}</h4>
                 </div>
                 <div class="row" ng-repeat="filters in item.filters" ng-if="$index % 2 == 0">
-                    <div class="col-50" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]">
+                    <div class="col-50" ng-repeat="i in [$index, $index + 1]">
                         <div class="card homeCustomecard">
-                            <div class="item item-text-wrap" ng-click="getDetails(item.filters[i].name)">
+                            <div class="item item-text-wrap" ng-click="getDetails(item.filters[i].type)">
                                 <img ng-src="{{item.filters[i].imgPath}}" alt="">
                                 <h4>{{item.filters[i].name}}</h4>
                                 <i class="ion-ios-arrow-right pull-right rightIcon"></i>

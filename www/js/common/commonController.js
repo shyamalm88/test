@@ -1,15 +1,13 @@
 'use strict'
 hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', 'commonService', '$ionicPopover', '$ionicHistory', '$ionicSideMenuDelegate', '$ionicModal',
     function($scope, $state, hereAppConstant, commonService, $ionicPopover, $ionicHistory, $ionicSideMenuDelegate, $ionicModal) {
-        //$scope.commonService = commonService;
-        $scope.commonService = commonService
-            // if needed to apply something for all route change
+        $scope.commonService = commonService;
+        // if needed to apply something for all route change
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 
             })
             //grant location access
         accessUserLoationData();
-
 
         //go back with cache
         $scope.prev = function() {
@@ -84,6 +82,8 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
             //alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
         }
 
+
+        // reverse geocoding to get location, country etc
         function getUserLocationDetails(latLng) {
             var geocoder = new google.maps.Geocoder();
             geocoder.geocode({ 'latLng': latLng }, function(results, status) {
@@ -91,19 +91,12 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
                     if (results[0]) {
                         var countryData = _.find(results[0].address_components, { 'types': ["country"] });
                         if (countryData)
-                            commonService.userData.country = countryData.short_name;
-                        //commonService.userData.location = results[0].formatted_address;
-                        commonService.userData.location = results[0].address_components[0].short_name + ', ' + results[0].address_components[1].short_name + ', ' + results[0].address_components[2].short_name;
-                        //console.log(results[0])
+                            $scope.commonService.userData.country = countryData.short_name;
+                        $scope.commonService.userData.location = results[0].formatted_address;
                     }
                 }
             });
         }
-
-
-
-        // reverse geocoding to get location, country etc
-
 
 
         //******************** Below code is for locaiton search and select functionality ************//
@@ -116,7 +109,7 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
                         if (data.status == "OK") {
                             return data.predictions;
                         }
-                    }, function(eror) {
+                    }, function(error) {
                         throw error;
                     })
             }
@@ -141,7 +134,7 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
                             if (countryData)
                                 $scope.commonService.userData.country = countryData.short_name;
                         }
-                    }, function(eror) {
+                    }, function(error) {
                         throw error;
                     })
             }

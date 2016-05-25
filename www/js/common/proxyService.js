@@ -18,7 +18,7 @@ hereApp.service('proxyService', ['$http', 'hereAppConstant', 'hereAppUtil', '$q'
             return $q.reject(response.data);
         }
       }, function(error) {
-          return $q.reject(response.data);
+          return $q.reject(error);
       });
   }
 
