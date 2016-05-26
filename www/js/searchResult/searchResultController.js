@@ -4,15 +4,15 @@ hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultS
 
         $scope.searchResultService = searchResultService;
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-            if(toState.name == 'searchResult'){
-                $scope.nextPageToken = null;
-                $scope.getNearByData(toParams.type);
-            }
-        })
-        // store search result data
+                if (toState.name == 'searchResult') {
+                    $scope.nextPageToken = null;
+                    $scope.getNearByData(toParams.type);
+                }
+            })
+            // store search result data
         $scope.getNearByData = function(item) {
             $ionicLoading.show({
-                template: 'Loading...'
+                template: '<img src="img/bloader.gif" alt="" />'
             })
             $scope.searchedType = item;
             var param = $scope.searchResultService.createReqParamForSearch(item, $scope.nextPageToken);
@@ -24,7 +24,7 @@ hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultS
                         $ionicLoading.hide()
                         $scope.nextPageToken = data.next_page_token;
                     }
-                    
+
                 }, function(error) {
                     throw error;
                 })

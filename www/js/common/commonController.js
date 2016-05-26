@@ -15,15 +15,14 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
         };
 
         $ionicLoading.show({
-            template: 'Loading...'
+            template: '<img src="img/bloader.gif" alt="" />'
         })
 
         $scope.toggleGroup = function(group) {
             //$event.preventDefault();
             if ($scope.isGroupShown(group)) {
                 $scope.shownGroup = null;
-            }
-            else {
+            } else {
                 $scope.shownGroup = group;
             }
         };
@@ -32,7 +31,7 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
         };
         //toggle search box
         $scope.toggleSearchPane = function() {
-            $scope.custom = $scope.custom === false ? true: false;
+            $scope.custom = $scope.custom === false ? true : false;
         };
 
         //login modal
@@ -112,9 +111,9 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
                         if (countryData)
                             $scope.commonService.userData.country = countryData.short_name;
                         $scope.commonService.userData.userLocation = results[0].formatted_address;
-                        $scope.currentLocation = ($scope.commonService.userData.userSelectedLocation) ? $scope.commonService.userData.userSelectedLocation: $scope.commonService.userData.userLocation;
+                        $scope.currentLocation = ($scope.commonService.userData.userSelectedLocation) ? $scope.commonService.userData.userSelectedLocation : $scope.commonService.userData.userLocation;
                         $scope.$apply();
-                       
+
                     }
                 }
             });
@@ -164,7 +163,7 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
             }
 
         }
-        
-        
+
+
     }
 ])

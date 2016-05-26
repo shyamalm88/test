@@ -1,9 +1,10 @@
-
 'use strict'
 hereApp.constant('hereAppConstant', {
     'WSPATH': {
-        'PATH': 'https://iamhere-shyamalm88.c9users.io:8081/'
+        'PATH': 'http://localhost:8081/'
+            //'https://iamhere-shyamalm88.c9users.io:8081/'
             //'PATH':'https://imhere-abhiksaha.c9users.io:8081/'
+            //'PATH':'http://localhost:8081/'
     },
     'WSURL': {
         'GET_PLACE_AUTOCOMPLETE': 'webService/getPlaceAutoComplete',
@@ -11,4 +12,3 @@ hereApp.constant('hereAppConstant', {
         'GET_NEAR_BY': 'webService/getNearbyData',
     }
 })
-

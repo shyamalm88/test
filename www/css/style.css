@@ -564,7 +564,7 @@ body {
 }
 
 .searchresults h2 {
-        font-weight: bold;
+    font-weight: bold;
     color: #000000;
     text-transform: uppercase;
 }
@@ -597,4 +597,21 @@ body {
     padding: 5px 5px;
     background: #4cae4c;
     color: #fff;
+    width: 24px;
+    height: 22px;
+    text-align: center;
+}
+
+.loading-container .loading {
+    padding: 0px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #fff;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 15px;
+}
+
+.loading-container .loading img {
+    width: 170px;
 }
