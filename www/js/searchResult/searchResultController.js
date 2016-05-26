@@ -1,13 +1,16 @@
 'use strict'
-hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultService', 'commonService',
-    function($scope, $state, searchResultService, commonService) {
+hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultService', 'commonService', '$ionicLoading',
+    function($scope, $state, searchResultService, commonService, $ionicLoading) {
 
         $scope.searchResultService = searchResultService;
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-            $scope.getNearByData(toParams.type);
-        })
-        // store search result data
+                $scope.getNearByData(toParams.type);
+            })
+            // store search result data
         $scope.getNearByData = function(item) {
+            $ionicLoading.show({
+                template: 'Loading...'
+            })
             $scope.searchedType = item;
             var param = $scope.searchResultService.createReqParamForSearch(item);
             $scope.commonService.proxyService.callWS($scope.commonService.proxyService.getNearByData, param)
@@ -15,7 +18,9 @@ hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultS
                     if (data.status == "OK") {
                         $scope.searchResultData = $scope.searchResultData ? $scope.searchResultData.concat(data.results) : data.results;
                         $scope.hasMoreData = (data.next_page_token) ? true : false;
+                        $ionicLoading.hide()
                     }
+                    
                 }, function(error) {
                     throw error;
                 })

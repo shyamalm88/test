@@ -19,10 +19,12 @@
             <div ng-repeat="result in searchResultData">
                 <div class="card">
                     <div class="item item-text-wrap searchresults">
+                        <img src="img/icons/direction.svg" alt="get direction" class="direction">
                         <h2 class="placesName">{{result.name}}</h2>
                         <h4 class="address">
-                            <i class="ion-ios-location" ng-show="result.vicinity"></i>{{result.vicinity}}</h4>
-                        <h5 class="rating">{{result.rating}}</h5>
+                            <i class="ion-location" ng-show="result.vicinity"></i>{{result.vicinity}}</h4>
+                        <h5 class="rating" ng-show="result.rating">{{result.rating}}</h5>
+                        
                     </div>
                 </div>
             </div>
