@@ -30,6 +30,10 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
         $scope.isGroupShown = function(group) {
             return $scope.shownGroup === group;
         };
+        //toggle search box
+        $scope.toggleSearchPane = function() {
+            $scope.custom = $scope.custom === false ? true: false;
+        };
 
         //login modal
         $ionicModal.fromTemplateUrl('partials/login/login.html', {
@@ -110,6 +114,7 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
                         $scope.commonService.userData.userLocation = results[0].formatted_address;
                         $scope.currentLocation = ($scope.commonService.userData.userSelectedLocation) ? $scope.commonService.userData.userSelectedLocation: $scope.commonService.userData.userLocation;
                         $scope.$apply();
+                       
                     }
                 }
             });

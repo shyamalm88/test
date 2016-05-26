@@ -1,11 +1,15 @@
-<ion-view view-title="Search Result">
+<ion-view view-title="{{currentLocation}}">
     <ion-nav-bar align-title="center" class="bar-positive">
         <ion-nav-buttons side="left">
             <div class="bar bar-header">
                 <button class="button button-clear" ng-click="prev()">
                     <span class="ion-android-arrow-back"></span>
                 </button>
+                
                 <div class="button button-clear">
+                    <button class="button button-clear" ng-click="toggleSearchPane()">
+                        <span class="icon-search" ></span>
+                    </button>
                     <button class="button button-clear" ng-click="openPopover($event)">
                         <span class="icon-menu rotate"></span>
                     </button>
@@ -13,6 +17,18 @@
             </div>
         </ion-nav-buttons>
     </ion-nav-bar>
+    <div class="bar bar-positive bar-subheader" ng-show="custom">
+        <div class="row">
+            <div class="col noPadding abcd">
+                <div class="list">
+                    <label class="item item-input">
+                        <i class="icon ion-search placeholder-icon"></i>
+                        <input type="search" name="" placeholder="Search desired places" md-autofocus="false"/>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
     <ion-content class="has-header has-footer-tab mainBg">
         <div class="mainContent">
             <here-app-map map-data="searchResultData" show-pins="true"></here-app-map>
