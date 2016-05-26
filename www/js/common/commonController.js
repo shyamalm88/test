@@ -92,7 +92,8 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
             //alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
         }
 
-
+        // variable to store location data
+        $scope.currentLocation = null;
         // reverse geocoding to get location, country etc
         function getUserLocationDetails(latLng) {
             var geocoder = new google.maps.Geocoder();
@@ -106,7 +107,9 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
                         });
                         if (countryData)
                             $scope.commonService.userData.country = countryData.short_name;
-                        $scope.commonService.userData.location = results[0].formatted_address;
+                        $scope.commonService.userData.userLocation = results[0].formatted_address;
+                        $scope.currentLocation = ($scope.commonService.userData.userSelectedLocation) ? $scope.commonService.userData.userSelectedLocation: $scope.commonService.userData.userLocation;
+                        $scope.$apply();
                     }
                 }
             });
@@ -138,17 +141,15 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
 
         $scope.selectedItemChange = function(item) {
             if (typeof item === 'object') {
-                $scope.commonService.userData.location = item.description;
-                var param = {
-                    'placeid': item.place_id
-                };
+
+                $scope.commonService.userData.userSelectedLocation = item.description;
+                $scope.currentLocation = $scope.commonService.userData.userSelectedLocation;
+                var param = { 'placeid': item.place_id };
                 $scope.commonService.proxyService.callWS($scope.commonService.proxyService.getPlaceDetails, param)
                     .then(function(data) {
                         if (data.status == "OK") {
-                            $scope.commonService.userData.userPostion = data.result.geometry.location;
-                            var countryData = _.find(data.result.address_components, {
-                                'types': ["country"]
-                            });
+                            $scope.commonService.userData.userSelectedPosition = data.result.geometry.location;
+                            var countryData = _.find(data.result.address_components, { 'types': ["country"] });
                             if (countryData)
                                 $scope.commonService.userData.country = countryData.short_name;
                         }
@@ -158,5 +159,7 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
             }
 
         }
+        
+        
     }
 ])

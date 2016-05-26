@@ -1,3 +1,4 @@
+
 'use strict'
 hereApp.constant('hereAppConstant', {
     'WSPATH': {
@@ -10,3 +11,4 @@ hereApp.constant('hereAppConstant', {
         'GET_NEAR_BY': 'webService/getNearbyData',
     }
 })
+
