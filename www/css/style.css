@@ -602,6 +602,16 @@ body {
     text-align: center;
 }
 
+.loading-container .loading {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(38, 87, 229);
+    color: #fff;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 15px;
+}
+
 .loading-container .loading img {
     width: 40px;
 }
