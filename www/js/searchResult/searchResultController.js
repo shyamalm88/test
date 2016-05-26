@@ -12,7 +12,7 @@ hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultS
             // store search result data
         $scope.getNearByData = function(item) {
             $ionicLoading.show({
-                template: '<img src="img/bloader.svg" alt="" />'
+                template: '<img src="img/bloader.gif" alt="" />'
             })
             $scope.searchedType = item;
             var param = $scope.searchResultService.createReqParamForSearch(item, $scope.nextPageToken);

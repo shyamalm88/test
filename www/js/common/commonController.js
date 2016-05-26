@@ -15,7 +15,7 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
         };
 
         $ionicLoading.show({
-            template: '<img src="img/bloader.svg" alt="" />'
+            template: '<img src="img/bloader.gif" alt="" />'
         })
 
         $scope.toggleGroup = function(group) {
