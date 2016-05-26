@@ -602,16 +602,6 @@ body {
     text-align: center;
 }
 
-.loading-container .loading {
-    padding: 0px;
-    border-radius: 5px;
-    background-color: transparent;
-    color: #fff;
-    text-align: center;
-    text-overflow: ellipsis;
-    font-size: 15px;
-}
-
 .loading-container .loading img {
-    width: 170px;
+    width: 40px;
 }
