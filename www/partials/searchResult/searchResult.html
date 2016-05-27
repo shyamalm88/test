@@ -5,10 +5,9 @@
                 <button class="button button-clear" ng-click="prev()">
                     <span class="ion-android-arrow-back"></span>
                 </button>
-                
                 <div class="button button-clear">
                     <button class="button button-clear" ng-click="toggleSearchPane()">
-                        <span class="icon-search" ></span>
+                        <span class="icon-search"></span>
                     </button>
                     <button class="button button-clear" ng-click="openPopover($event)">
                         <span class="icon-menu rotate"></span>
@@ -23,7 +22,7 @@
                 <div class="list">
                     <label class="item item-input">
                         <i class="icon ion-search placeholder-icon"></i>
-                        <input type="search" name="" placeholder="Search desired places" md-autofocus="false"/>
+                        <input type="search" name="" placeholder="Search desired places" md-autofocus="false" />
                     </label>
                 </div>
             </div>
@@ -34,27 +33,14 @@
             <here-app-map map-data="searchResultData" show-pins="true"></here-app-map>
             <div ng-repeat="result in searchResultData">
                 <div class="card">
-<<<<<<< HEAD
-                    <div class="item item-text-wrap searchResults">
-                        <h2 class="placesName">{{result.name}}</h2>
-                        <h4 class="address"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>{{result.vicinity}}</span></h4>
-                        <h5 class="rating" ng-show="result.rating">{{result.rating}}</h5>
-=======
                     <div class="item item-text-wrap searchresults">
                         <img src="img/icons/direction.svg" alt="get direction" class="direction">
                         <h2 class="placesName">{{result.name}}</h2>
-<<<<<<< HEAD
                         <h4 class="address">
-                            <i class="ion-ios-location" ng-show="result.vicinity"></i>{{result.vicinity}}</h4>
-                        <h5 class="rating">{{result.rating}}</h5>
->>>>>>> d3e870174df2bb916185a48585e9dc91ebfe5361
-=======
-                        <h4 class="address"><i class="ion-location" ng-show="result.vicinity"></i>{{result.vicinity}}</h4>
+                            <i class="ion-location" ng-show="result.vicinity"></i>{{result.vicinity}}</h4>
                         <h5 class="rating" ng-show="result.rating">{{result.rating}}</h5>
                         <h5 class="distance" ng-show="result.distance.distance.text">Distance: {{result.distance.distance.text}}</h5>
                         <h5 class="rating" ng-show="result.rating">{{result.rating}}</h5>
-
->>>>>>> 8bc1b5976779ffda3e3a5243d130133918ad0d10
                     </div>
                 </div>
             </div>
