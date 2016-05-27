@@ -15,11 +15,7 @@ app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bodies; 
 app.use('/webService', route);
 
-<<<<<<< HEAD
-app.listen(8081, function(){
-	console.log('server is ready')
-=======
-app.listen(3333, function() {
+
+app.listen(8081, function() {
     console.log('server is ready')
->>>>>>> d3e870174df2bb916185a48585e9dc91ebfe5361
 });

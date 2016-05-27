@@ -28,7 +28,7 @@
                 <div class="list">
                     <label class="item item-input">
                         <i class="icon ion-location placeholder-icon"></i>
-                        <md-autocomplete md-selected-item="commonService.userData.location" md-search-text="searchText" md-items="item in getPlaceAutoCompleteData(searchText)" md-item-text="item.description" md-selected-item-change="selectedItemChange(item)" md-min-length="2" md-no-cache="true" placeholder="Choose Your Location" md-autofocus="false">
+                        <md-autocomplete md-selected-item="currentLocation" md-search-text="searchText" md-items="item in getPlaceAutoCompleteData(searchText)" md-item-text="item.description" md-selected-item-change="selectedItemChange(item)" md-min-length="2" md-no-cache="true" placeholder="Choose Your Location" md-autofocus="false">
                             <md-item-template>
                                 <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.description}}</span>
                             </md-item-template>

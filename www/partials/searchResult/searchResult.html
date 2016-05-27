@@ -1,11 +1,15 @@
-<ion-view view-title="Search Result">
+<ion-view view-title="{{currentLocation}}">
     <ion-nav-bar align-title="center" class="bar-positive">
         <ion-nav-buttons side="left">
             <div class="bar bar-header">
                 <button class="button button-clear" ng-click="prev()">
                     <span class="ion-android-arrow-back"></span>
                 </button>
+                
                 <div class="button button-clear">
+                    <button class="button button-clear" ng-click="toggleSearchPane()">
+                        <span class="icon-search" ></span>
+                    </button>
                     <button class="button button-clear" ng-click="openPopover($event)">
                         <span class="icon-menu rotate"></span>
                     </button>
@@ -13,9 +17,21 @@
             </div>
         </ion-nav-buttons>
     </ion-nav-bar>
+    <div class="bar bar-positive bar-subheader" ng-show="custom">
+        <div class="row">
+            <div class="col noPadding abcd">
+                <div class="list">
+                    <label class="item item-input">
+                        <i class="icon ion-search placeholder-icon"></i>
+                        <input type="search" name="" placeholder="Search desired places" md-autofocus="false"/>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
     <ion-content class="has-header has-footer-tab mainBg">
         <div class="mainContent">
-            <here-app-map map-data = "searchResultData" show-pins="true"></here-app-map>
+            <here-app-map map-data="searchResultData" show-pins="true"></here-app-map>
             <div ng-repeat="result in searchResultData">
                 <div class="card">
 <<<<<<< HEAD
@@ -25,16 +41,25 @@
                         <h5 class="rating" ng-show="result.rating">{{result.rating}}</h5>
 =======
                     <div class="item item-text-wrap searchresults">
+                        <img src="img/icons/direction.svg" alt="get direction" class="direction">
                         <h2 class="placesName">{{result.name}}</h2>
+<<<<<<< HEAD
                         <h4 class="address">
                             <i class="ion-ios-location" ng-show="result.vicinity"></i>{{result.vicinity}}</h4>
                         <h5 class="rating">{{result.rating}}</h5>
 >>>>>>> d3e870174df2bb916185a48585e9dc91ebfe5361
+=======
+                        <h4 class="address"><i class="ion-location" ng-show="result.vicinity"></i>{{result.vicinity}}</h4>
+                        <h5 class="rating" ng-show="result.rating">{{result.rating}}</h5>
+                        <h5 class="distance" ng-show="result.distance.distance.text">Distance: {{result.distance.distance.text}}</h5>
+                        <h5 class="rating" ng-show="result.rating">{{result.rating}}</h5>
+
+>>>>>>> 8bc1b5976779ffda3e3a5243d130133918ad0d10
                     </div>
                 </div>
             </div>
             <div class="button button-positive button-block" ng-click="getNearByData(searchedType)" ng-if="hasMoreData">
-                    Load More
+                Load More
             </div>
         </div>
     </ion-content>

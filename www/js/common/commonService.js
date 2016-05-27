@@ -4,8 +4,10 @@ hereApp.service('commonService', ['proxyService', function(proxyService) {
     commonService.proxyService = proxyService;
     commonService.userData = {
         'userPostion': null,
+        'userSelectedPosition': null,
         'country': null,
-        'location': null
+        'userLocation': null,
+        'userSelectedLocation': null
     };
 
 }]);
