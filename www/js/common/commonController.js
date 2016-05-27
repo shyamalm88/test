@@ -113,10 +113,11 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
                         $scope.commonService.userData.userLocation = results[0].formatted_address;
                         $scope.currentLocation = ($scope.commonService.userData.userSelectedLocation) ? $scope.commonService.userData.userSelectedLocation : $scope.commonService.userData.userLocation;
                         $scope.$apply();
-
+                        $ionicLoading.hide();
                     }
                 }
             });
+            
         }
 
 
@@ -125,7 +126,7 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
         $scope.getPlaceAutoCompleteData = function(searchText) {
             if (searchText != '') {
                 var param = createGetPlaceAutoCompleteParam(searchText);
-                return $scope.commonService.proxyService.callWS($scope.commonService.proxyService.getPlaceAutoComplete, param)
+                return $scope.commonService.proxyService.callWS($scope.commonService.proxyService.getPlaceAutoComplete, param, true)
                     .then(function(data) {
                         if (data.status == "OK") {
                             return data.predictions;

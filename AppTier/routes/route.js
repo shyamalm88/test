@@ -3,11 +3,13 @@
 // Require all modules
 var express = require("express"),
 	request = require("request"),
+	file=require("fs"),
 	router = express.Router(); 
 
 //Api Key
 var mapApiKey = 'AIzaSyC4xjrSTD2KELiRE9a6VqFo5a7ykX8Ydw0',
 	searchApiKey = 'AIzaSyAzyPg-0q71sGRkmFLxrTaI5-zZPDr3rSA',
+	//searchApiKey = 'AIzaSyAI9zCJo1ms31DHnZ-hMtcPwRomMJgXI0k',
 	pageToken;
 
 
@@ -31,6 +33,7 @@ router.post('/getNearbyData', function(req, resp){
 			var destinationList = '',
 				data = JSON.parse(body),
 				locationData;
+				
 			for(var i = 0; i< data.results.length; i++){
 				if(destinationList == '')
 					destinationList = data.results[i].geometry.location.lat+','+data.results[i].geometry.location.lng;
@@ -38,7 +41,7 @@ router.post('/getNearbyData', function(req, resp){
 					destinationList = destinationList+'|'+data.results[i].geometry.location.lat+','+data.results[i].geometry.location.lng;
 			}
 			var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?key='+searchApiKey+'&origins='+req.body.location+'&destinations='+destinationList;
-			
+			console.log(url);
 			request.get({url: url}, function(error, response, body)	{
 				if(error)
 					return error;
@@ -87,6 +90,21 @@ router.post('/getPlaceDetails', function(req, resp){
 		else
 			resp.send(JSON.parse(body));
 		
+	});
+});	
+
+router.post('/getPlacePhoto', function(req, resp){
+	var url = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key='+searchApiKey,
+		optionUrl = createReqUrl(url, req.body),
+		options = {url: optionUrl};
+		
+	request.get(options, function(error, response, body)	{
+		if(error)
+			resp.send(error);
+		else{ 
+			
+			resp.send(resp.headers.locationData);
+		}
 	});
 });	
 var createReqUrl = function(url, qObj){

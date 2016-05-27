@@ -8,7 +8,11 @@ hereApp.directive('hereAppMap', function(commonService){
             showPins : '='
         }, 
         link: function(scope, ele, attr){
-            
+            var map = new google.maps.Map(document.getElementById('mapLocation'), {
+                zoom: 10,
+                center: commonService.userData.userPostion,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
             scope.$watch('data', function(newVal, oldVal){
                 if(newVal){
                     scope.showDataOnMap();
@@ -20,13 +24,6 @@ hereApp.directive('hereAppMap', function(commonService){
                     angular.forEach(scope.data, function(value, key) {
                         locations.push([value.vicinity, value.geometry.location.lat, value.geometry.location.lng, key.length - 1]);
                     });
-                    //console.log(commonService.userData.userPostion.lat)
-                    var map = new google.maps.Map(document.getElementById('mapLocation'), {
-                        zoom: 10,
-                        center: commonService.userData.userPostion,
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    });
-            
                     var infowindow = new google.maps.InfoWindow();
             
                     _.each(locations, function(location){
