@@ -1,0 +1,62 @@
+<ion-view view-title="{{currentLocation}}">
+    <ion-nav-bar align-title="center" class="bar-positive">
+        <ion-nav-buttons side="left">
+            <div class="bar bar-header">
+                <button class="button button-clear" ng-click="prev()">
+                    <span class="ion-android-arrow-back"></span>
+                </button>
+                <div class="button button-clear">
+                    <button class="button button-clear" ng-click="toggleSearchPane()">
+                        <span class="icon-search"></span>
+                    </button>
+                    <button class="button button-clear" ng-click="openPopover($event)">
+                        <span class="icon-menu rotate"></span>
+                    </button>
+                </div>
+            </div>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <div class="bar bar-positive bar-subheader" ng-show="custom">
+        <div class="row">
+            <div class="col noPadding abcd">
+                <div class="list">
+                    <label class="item item-input">
+                        <i class="icon ion-search placeholder-icon"></i>
+                        <input type="search" name="" placeholder="Search desired places" />
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ion-content class="has-header has-footer-tab mainBg">
+        <div class="mainContent">
+            <here-app-map></here-app-map>
+            <div class="card" ng-show="placeDetailsData">
+                <div class="item item-text-wrap searchresults">
+                    <h2 class="placesName">{{placeDetailsData.name}}</h2>
+                    <h4 class="address" ng-show="placeDetailsData.formatted_address">
+                        <i class="ion-location"></i>{{placeDetailsData.formatted_address}}</h4>
+                    <h4 class="address" ng-show="placeDetailsData.formatted_phone_number || placeDetailsData.international_phone_number">
+                        <i class="ion-android-call"></i>{{placeDetailsData.formatted_phone_number}} / {{placeDetailsData.international_phone_number}}</h4>
+                    <h4>
+                        <a ng-href="{{placeDetailsData.website}}" target="_blank" ng-show="placeDetailsData.website">
+                            <i class="ion-ios-world-outline"></i>{{placeDetailsData.website}}</a>
+                    </h4>
+                    <!-- <img ng-src="{{placePhoto}}" /> -->
+                    <h2 ng-show="review.text">Reviews</h2>
+                    <div class="reviews" ng-repeat="review in placeDetailsData.reviews" ng-show="review.text">
+                        <div class="reviewsPerUser" ng-show="review.text">
+                            <p class="pull-quote">{{review.text}}
+                                <small class="author">
+                                    -- {{review.author_name}}
+                                </small>
+                                <span star-rating rating="review.rating" read-only="false" max-rating="5" class="starRating">
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

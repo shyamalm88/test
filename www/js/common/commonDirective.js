@@ -1,44 +1,52 @@
 'use strict'
-hereApp.directive('hereAppMap', function(commonService){
-    return{
+hereApp.directive('hereAppMap', function(commonService) {
+    return {
         restrict: 'E',
-        templateUrl:'partials/common/map.html',
-        scope:{
+        templateUrl: 'partials/common/map.html',
+        scope: {
             data: '=mapData',
-            showPins : '='
-        }, 
-        link: function(scope, ele, attr){
-            
-            scope.$watch('data', function(newVal, oldVal){
-                if(newVal){
+            showPins: '='
+        },
+        link: function(scope, ele, attr) {
+            var map = new google.maps.Map(document.getElementById('mapLocation'), {
+                zoom: 12,
+                center: commonService.userData.userPostion,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            scope.$watch('data', function(newVal, oldVal) {
+                if (newVal) {
                     scope.showDataOnMap();
                 }
             }, true)
-            scope.showDataOnMap = function(){
-                if(scope.showPins){
-                    var locations = [], marker, i;
+            scope.showDataOnMap = function() {
+                if (scope.showPins) {
+                    var locations = [],
+                        marker, i, placeName = [];
                     angular.forEach(scope.data, function(value, key) {
+                        placeName.push(value.name);
                         locations.push([value.vicinity, value.geometry.location.lat, value.geometry.location.lng, key.length - 1]);
                     });
-                    //console.log(commonService.userData.userPostion.lat)
-                    var map = new google.maps.Map(document.getElementById('mapLocation'), {
-                        zoom: 10,
-                        center: commonService.userData.userPostion,
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    });
-            
                     var infowindow = new google.maps.InfoWindow();
-            
-                    _.each(locations, function(location){
-                         marker = new google.maps.Marker({
+
+                    _.each(locations, function(location, i) {
+                        marker = new google.maps.Marker({
                             position: new google.maps.LatLng(location[1], location[2]),
                             map: map,
                             animation: google.maps.Animation.DROP
                         });
-            
+                        var contentString = '<div id="content">' +
+                            '<div id="siteNotice">' +
+                            '</div>' +
+                            '<h4 id="firstHeading" class="firstHeading">' + placeName[i] + '</h4>' +
+                            '<div id="bodyContent">' +
+                            '<p>' + location[0] + '</p>' +
+                            '</div>' +
+                            '</div>';
+
                         google.maps.event.addListener(marker, 'click', (function(marker, i) {
                             return function() {
-                                infowindow.setContent(location[0]);
+                                infowindow.setContent(contentString);
+                                //infowindow.setContent(location[0]);
                                 infowindow.open(map, marker);
                                 /*if (marker.getAnimation() !== null) {
                                     marker.setAnimation(null);
@@ -48,7 +56,7 @@ hereApp.directive('hereAppMap', function(commonService){
                             }
                         })(marker, i));
                     })
-                }   
+                }
             }
         }
     }

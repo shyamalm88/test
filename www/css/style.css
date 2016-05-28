@@ -347,13 +347,13 @@ body {
 }
 
 .homeCustomecard img {
-    <<<<<<< HEAD width: 60px;
+    width: 60px;
     height: 60px;
     padding: 10px;
     background: #fff;
     border-radius: 50%;
     border: 1px solid rgba(2, 2, 2, 0.2);
-    =======width: 20px;
+    width: 20px;
     height: 20px;
     display: inline-block;
     vertical-align: top;
@@ -364,7 +364,6 @@ body {
 .homeCustomecard .rightIcon {
     margin-top: 0px;
     margin-right: 3px;
-    >>>>>>> f9d255ae611b4323366453b3f77b68388bd3b522
 }
 
 .mainContent {
@@ -415,11 +414,11 @@ body {
     margin-bottom: 5px;
 }
 
-<<<<<<< HEAD=======.dineout {
+.dineout {
     margin-bottom: 20px;
 }
 
->>>>>>> f9d255ae611b4323366453b3f77b68388bd3b522 .slider-pager .slider-pager-page {
+.slider-pager .slider-pager-page {
     width: 7px;
     margin: 0px 1px;
 }
@@ -428,7 +427,7 @@ body {
     font-size: 7px;
 }
 
-<<<<<<< HEAD=======.misc {
+.misc {
     padding-top: 0px;
 }
 
@@ -566,10 +565,169 @@ body {
     margin-top: -20px;
 }
 
-.searchresults h4.address {
+.searchResults .address {
     color: #777;
 }
 
+.searchResults .address span {
+    display: block;
+    overflow: hidden;
+}
+
+.searchResults .address i {
+    font-size: 14px;
+    float: left;
+    margin-right: 5px;
+}
+
+.searchResults {
+    position: relative;
+}
+
+.searchResults .rating {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 4px 6px;
+    color: #fff;
+    background: green;
+    border-radius: 2px 0px 0px 2px;
+}
+
+.searchresults {
+    position: relative;
+}
+
+.searchresults h2 {
+    font-weight: bold;
+    color: #000000;
+    text-transform: uppercase;
+}
+
+.searchresults h4.address {
+    color: #777;
+    text-transform: capitalize;
+    margin-top: 5px;
+}
+
 .searchresults h4 i {
+    margin-right: 5px;
+    font-size: 15px;
+    margin-top: -3px;
+    float: left;
+    color: #3185FF;
+}
+
+.searchresults .direction {
+    float: right;
+    width: 30px;
+    margin-top: 4px;
     margin-right: 10px;
+}
+
+.searchresults h5.rating {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 5px 5px;
+    background: #4cae4c;
+    color: #fff;
+    width: 26px;
+    height: 22px;
+    text-align: center;
+}
+
+.loading-container .loading {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(38, 87, 229);
+    color: #fff;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 15px;
+}
+
+.loading-container .loading img {
+    width: 40px;
+}
+
+.button.button-positive.viewOnMap {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    font-weight: bold;
+    border-radius: 0px;
+    padding: 2px 20px;
+    background-color: #3185FF;
+    text-transform: capitalize;
+}
+
+.item p.pull-quote {
+    padding: 50px 30px;
+    padding: 20px 95px 20px 50px;
+    color: #777777;
+    margin: 6px auto!important;
+    text-align: left;
+    width: 100%!important;
+    font-style: italic;
+    font-weight: 600;
+    background: #EFEFEF;
+    position: relative;
+}
+
+.item p.pull-quote:before {
+    content: " ";
+    position: absolute;
+    top: 15px;
+    height: 20px;
+    width: 20px;
+    left: 10px;
+    background: url("../img/icons/left-quote.svg") no-repeat;
+    background-size: 20px 20px;
+}
+
+.item p.pull-quote:after {
+    content: " ";
+    position: absolute;
+    bottom: 10px;
+    height: 20px;
+    width: 20px;
+    right: 10px;
+    background: url("../img/icons/right-quote.svg") no-repeat;
+    background-size: 15px 15px;
+}
+
+.reviewsPerUser {
+    margin-bottom: 10px;
+}
+
+.reviewsPerUser .author {
+    display: block;
+    font-style: normal;
+    text-transform: capitalize;
+    font-weight: 400;
+    color: #7D7D7D;
+}
+
+.reviewsPerUser .author i {
+    margin-right: 5px;
+    font-style: normal;
+}
+
+.starRatingHolder {
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+}
+
+.starRatingHolder .starrating {
+    width: 15px;
+    height: 15px;
+}
+
+.starRating {
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }

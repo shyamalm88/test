@@ -1,4 +1,4 @@
-<ion-view view-title="Search Result">
+<ion-view view-title="{{currentLocation}}">
     <ion-nav-bar align-title="center" class="bar-positive">
         <ion-nav-buttons side="left">
             <div class="bar bar-header">
@@ -6,6 +6,9 @@
                     <span class="ion-android-arrow-back"></span>
                 </button>
                 <div class="button button-clear">
+                    <button class="button button-clear" ng-click="toggleSearchPane()">
+                        <span class="icon-search"></span>
+                    </button>
                     <button class="button button-clear" ng-click="openPopover($event)">
                         <span class="icon-menu rotate"></span>
                     </button>
@@ -13,21 +16,39 @@
             </div>
         </ion-nav-buttons>
     </ion-nav-bar>
+    <div class="bar bar-positive bar-subheader" ng-show="custom">
+        <div class="row">
+            <div class="col noPadding abcd">
+                <div class="list">
+                    <label class="item item-input">
+                        <i class="icon ion-search placeholder-icon"></i>
+                        <input type="search" name="" placeholder="Search desired places" md-autofocus="false" />
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
     <ion-content class="has-header has-footer-tab mainBg">
         <div class="mainContent">
-            <here-app-map map-data = "searchResultData" show-pins="true"></here-app-map>
-            <div ng-repeat="result in searchResultData">
+            <here-app-map map-data="searchResultData" show-pins="true"></here-app-map>
+            <div ng-repeat="result in searchResultData" ng-show="result.name">
                 <div class="card">
                     <div class="item item-text-wrap searchresults">
-                        <h2 class="placesName">{{result.name}}</h2>
-                        <h4 class="address">
-                            <i class="ion-ios-location" ng-show="result.vicinity"></i>{{result.vicinity}}</h4>
-                        <h5 class="rating">{{result.rating}}</h5>
+                        <img src="img/icons/direction.svg" alt="get direction" class="direction">
+                        <div ng-click="goToDetails(result.place_id)">
+                            <h2 class="placesName">{{result.name}}</h2>
+                            <h4 class="address">
+                                <i class="ion-location" ng-show="result.vicinity"></i>{{result.vicinity}}</h4>
+                            <h5 class="rating" ng-show="result.rating">{{result.rating}}</h5>
+                            <h4 class="address" ng-show="result.distance.distance.text">
+                                <i class="ion-android-walk"></i>{{result.distance.distance.text}}</h4>
+                        </div>
+                        <a href="javascript:void(0)" class="button button-positive button-small viewOnMap">View on map</a>
                     </div>
                 </div>
             </div>
             <div class="button button-positive button-block" ng-click="getNearByData(searchedType)" ng-if="hasMoreData">
-                    Load More
+                Load More
             </div>
         </div>
     </ion-content>
