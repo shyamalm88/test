@@ -35,9 +35,13 @@
                 <div class="item item-text-wrap searchresults">
                     <h2 class="placesName">{{placeDetailsData.name}}</h2>
                     <h4 class="address" ng-show="placeDetailsData.formatted_address">
-                        <i class="ion-location"></i>{{placeDetailsData.formatted_address}}</h4>
+                        <i class="ion-location"></i>
+                        <span>{{placeDetailsData.formatted_address}}</span>
+                    </h4>
                     <h4 class="address" ng-show="placeDetailsData.formatted_phone_number || placeDetailsData.international_phone_number">
-                        <i class="ion-android-call"></i>{{placeDetailsData.formatted_phone_number}} / {{placeDetailsData.international_phone_number}}</h4>
+                        <i class="ion-android-call"></i>
+                        <span>{{placeDetailsData.formatted_phone_number}} / {{placeDetailsData.international_phone_number}}</span>
+                    </h4>
                     <h4>
                         <a ng-href="{{placeDetailsData.website}}" target="_blank" ng-show="placeDetailsData.website">
                             <i class="ion-ios-world-outline"></i>{{placeDetailsData.website}}</a>

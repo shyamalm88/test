@@ -38,7 +38,9 @@
                         <div ng-click="goToDetails(result.place_id)">
                             <h2 class="placesName">{{result.name}}</h2>
                             <h4 class="address">
-                                <i class="ion-location" ng-show="result.vicinity"></i>{{result.vicinity}}</h4>
+                                <i class="ion-location" ng-show="result.vicinity"></i>
+                                <span>{{result.vicinity}}</span>
+                            </h4>
                             <h5 class="rating" ng-show="result.rating">{{result.rating}}</h5>
                             <h4 class="address" ng-show="result.distance.distance.text">
                                 <i class="ion-android-walk"></i>{{result.distance.distance.text}}</h4>
