@@ -20,8 +20,6 @@ hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultS
                         $scope.searchResultData = $scope.searchResultData ? $scope.searchResultData.concat(data.results) : data.results;
                         $scope.hasMoreData = (data.next_page_token) ? true : false;
                         $scope.nextPageToken = data.next_page_token;
-
-                        console.log($scope.searchResultData);
                     }
 
                 }, function(error) {

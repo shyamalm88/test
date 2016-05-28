@@ -11,13 +11,15 @@ hereApp.directive('hereAppMap', function(commonService, $timeout ) {
         },
         controller: ['$scope', function(scope) {
             var map,
+                markerArray = [],
                 directionsDisplay = new google.maps.DirectionsRenderer,
-                directionsService = new google.maps.DirectionsService;
+                directionsService = new google.maps.DirectionsService,
+                stepDisplay = new google.maps.InfoWindow;;
             // some delay to get the dom ready
             $timeout(function(){
                 map = new google.maps.Map(document.getElementById('mapLocation'), {
                     zoom: 12,
-                    center: commonService.userData.userSelectedPosition,
+                    center: (commonService.userData.userSelectedPosition)?commonService.userData.userSelectedPosition: commonService.userData.userPosition,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 });
 
@@ -78,10 +80,14 @@ hereApp.directive('hereAppMap', function(commonService, $timeout ) {
             scope.showDirectionOnMap = function(){
                 if(scope.showDirection){                    
                     directionsDisplay.setMap(map);
+                    directionsDisplay.setPanel(document.getElementById('direction-details'));
                     scope.changeDirectionMode('DRIVING');
                 }
             }
             scope.changeDirectionMode = function(selectedMode){
+                for (var i = 0; i < markerArray.length; i++) {
+                    markerArray[i].setMap(null);
+                }
                 directionsService.route({
                   origin: commonService.userData.userPosition,
                   destination: scope.directionDestination, 
@@ -89,12 +95,34 @@ hereApp.directive('hereAppMap', function(commonService, $timeout ) {
                 }, function(response, status) {
                   if (status == google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);
+                    showSteps(response, markerArray, stepDisplay, map);
                   } else {
                     window.alert('Directions request failed due to ' + status);
                   }
                 });
+
+                function showSteps(directionResult, markerArray, stepDisplay, map) {
+                  // For each step, place a marker, and add the text to the marker's infowindow.
+                  // Also attach the marker to an array so we can keep track of it and remove it
+                  // when calculating new routes.
+                    var myRoute = directionResult.routes[0].legs[0];
+                    for (var i = 0; i < myRoute.steps.length; i++) {
+                        var marker = markerArray[i] = markerArray[i] || new google.maps.Marker;
+                        marker.setMap(map);
+                        marker.setPosition(myRoute.steps[i].start_location);
+                        attachInstructionText(stepDisplay, marker, myRoute.steps[i].instructions, map);
+                    }
+                }
+
+                function attachInstructionText(stepDisplay, marker, text, map) {
+                    google.maps.event.addListener(marker, 'click', function() {
+                        // Open an info window when the marker is clicked on, containing the text
+                        // of the step.
+                        stepDisplay.setContent(text);
+                        stepDisplay.open(map, marker);
+                    });
+                }  
             }
-            
         }]
     }
 })
