@@ -83,11 +83,11 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
         // onSuccess Geolocation
         //
         function onGetLocationSuccess(position) {
-            $scope.commonService.userData.userPostion = {
+            $scope.commonService.userData.userPosition = {
                 'lat': position.coords.latitude,
                 'lng': position.coords.longitude
             };
-            getUserLocationDetails($scope.commonService.userData.userPostion);
+            getUserLocationDetails($scope.commonService.userData.userPosition);
         }
 
         // onError Callback receives a PositionError object

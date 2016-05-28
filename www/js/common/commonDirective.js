@@ -1,23 +1,40 @@
 'use strict'
-hereApp.directive('hereAppMap', function(commonService) {
+hereApp.directive('hereAppMap', function(commonService, $timeout ) {
     return {
         restrict: 'E',
         templateUrl: 'partials/common/map.html',
         scope: {
             data: '=mapData',
-            showPins: '='
+            showPins: '=',
+            showDirection: '=',
+            directionDestination: '='
         },
-        link: function(scope, ele, attr) {
-            var map = new google.maps.Map(document.getElementById('mapLocation'), {
-                zoom: 12,
-                center: commonService.userData.userPostion,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
-            scope.$watch('data', function(newVal, oldVal) {
-                if (newVal) {
-                    scope.showDataOnMap();
-                }
-            }, true)
+        controller: ['$scope', function(scope) {
+            var map,
+                directionsDisplay = new google.maps.DirectionsRenderer,
+                directionsService = new google.maps.DirectionsService;
+            // some delay to get the dom ready
+            $timeout(function(){
+                map = new google.maps.Map(document.getElementById('mapLocation'), {
+                    zoom: 12,
+                    center: commonService.userData.userSelectedPosition,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
+
+                scope.$watch('data', function(newVal, oldVal) {
+                    if (newVal) {
+                        scope.showDataOnMap();
+                    }
+                }, true)
+
+                scope.$watch('directionDestination', function(newVal, oldVal) {
+                    if (newVal) {
+                        scope.showDirectionOnMap();
+                    }
+                }, true)
+            },1000)
+            
+            
             scope.showDataOnMap = function() {
                 if (scope.showPins) {
                     var locations = [],
@@ -58,6 +75,26 @@ hereApp.directive('hereAppMap', function(commonService) {
                     })
                 }
             }
-        }
+            scope.showDirectionOnMap = function(){
+                if(scope.showDirection){                    
+                    directionsDisplay.setMap(map);
+                    scope.changeDirectionMode('DRIVING');
+                }
+            }
+            scope.changeDirectionMode = function(selectedMode){
+                directionsService.route({
+                  origin: commonService.userData.userPosition,
+                  destination: scope.directionDestination, 
+                  travelMode: google.maps.TravelMode[selectedMode]
+                }, function(response, status) {
+                  if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                  } else {
+                    window.alert('Directions request failed due to ' + status);
+                  }
+                });
+            }
+            
+        }]
     }
 })

@@ -30,7 +30,7 @@
     </div>
     <ion-content class="has-header has-footer-tab mainBg">
         <div class="mainContent">
-            <here-app-map></here-app-map>
+            <here-app-map show-direction="true" direction-destination="placeDetailsData.geometry.location"></here-app-map>
             <div class="card" ng-show="placeDetailsData">
                 <div class="item item-text-wrap searchresults">
                     <h2 class="placesName">{{placeDetailsData.name}}</h2>

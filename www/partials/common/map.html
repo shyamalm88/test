@@ -1,1 +1,12 @@
-<div id="mapLocation"></div>
+<div class="card">
+	<div id="mapLocation"></div>
+	<div class="direction" ng-if="showDirection">
+		<div class="direction-mode">
+			<a href="javascript:void(0)" ng-click="changeDirectionMode('DRIVING')">Driving</a>
+			<a href="javascript:void(0)" ng-click="changeDirectionMode('WALKING')">Walking</a>
+			<a href="javascript:void(0)" ng-click="changeDirectionMode('BICYCLING')">Bicycling</a>
+			<a href="javascript:void(0)" ng-click="changeDirectionMode('TRANSIT')">Transit</a>
+		</div>
+		<div class="direction-details"></div>
+	</div>
+</div>

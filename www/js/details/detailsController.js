@@ -16,8 +16,7 @@ hereApp.controller('detailsController', ['$scope', '$state', 'detailsService', '
                 .then(function(placeData) {
                     if (placeData.status == "OK") {
                         $scope.placeDetailsData = placeData.result;
-                        console.log($scope.placeDetailsData);
-                        $scope.showPlacePhoto($scope.placeDetailsData.photos[5].photo_reference);
+                        //$scope.showPlacePhoto($scope.placeDetailsData.photos[5].photo_reference);
                     }
                 }, function(error) {
                     throw error;
