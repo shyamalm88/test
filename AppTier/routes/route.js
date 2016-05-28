@@ -6,8 +6,8 @@ var express = require("express"),
     router = express.Router();
 
 //Api Key
-var mapApiKey = 'AIzaSyA0I2skHnjKGzyRen0P7uhM-OuiwgNcp4g', //Avik's api : AIzaSyC4xjrSTD2KELiRE9a6VqFo5a7ykX8Ydw0', //Shyamal's api : 'AIzaSyA0I2skHnjKGzyRen0P7uhM-OuiwgNcp4g'
-    searchApiKey = 'AIzaSyBoJp3KY6J5cnrlBT2rFMAS46FVHzRChs4', //Avik's api : 'AIzaSyAzyPg-0q71sGRkmFLxrTaI5-zZPDr3rSA', //Shyamal's api : 'AIzaSyBoJp3KY6J5cnrlBT2rFMAS46FVHzRChs4'
+var mapApiKey = 'AIzaSyC4xjrSTD2KELiRE9a6VqFo5a7ykX8Ydw0', //Avik's api : 'AIzaSyC4xjrSTD2KELiRE9a6VqFo5a7ykX8Ydw0', //Shyamal's api : 'AIzaSyA0I2skHnjKGzyRen0P7uhM-OuiwgNcp4g', 'AIzaSyBfrVC5tsPWVsyH7Txa79b_-2bIQ_VIAkI'
+    searchApiKey = 'AIzaSyAzyPg-0q71sGRkmFLxrTaI5-zZPDr3rSA', //Avik's api : 'AIzaSyAzyPg-0q71sGRkmFLxrTaI5-zZPDr3rSA', //Shyamal's api : 'AIzaSyBoJp3KY6J5cnrlBT2rFMAS46FVHzRChs4', 'AIzaSyDe8KZdVOTrU3KdZP7_4AbJUGqea7IYBq4' 
     //searchApiKey = 'AIzaSyAI9zCJo1ms31DHnZ-hMtcPwRomMJgXI0k',
     pageToken;
 
@@ -48,7 +48,7 @@ router.post('/getNearbyData', function(req, resp) {
                     locationData = JSON.parse(body);
                     for (var j = 0; j < data.results.length; j++) {
                         data.results[j].distance = {};
-                        data.results[j].distance = locationData.rows[0].elements[j];
+                        //data.results[j].distance = locationData.rows[0].elements[j];
                     }
                     resp.send(data);
                 }
