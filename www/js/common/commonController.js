@@ -117,7 +117,7 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
                     }
                 }
             });
-            
+
         }
 
 

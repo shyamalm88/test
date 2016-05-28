@@ -609,7 +609,7 @@ body {
     font-size: 15px;
     margin-top: -3px;
     float: left;
-    color: #9A9A9A;
+    color: #3185FF;
 }
 
 .searchresults .direction {
@@ -626,7 +626,7 @@ body {
     padding: 5px 5px;
     background: #4cae4c;
     color: #fff;
-    width: 24px;
+    width: 26px;
     height: 22px;
     text-align: center;
 }
@@ -652,6 +652,76 @@ body {
     font-weight: bold;
     border-radius: 0px;
     padding: 2px 20px;
-    background-color: #2657E5;
+    background-color: #3185FF;
     text-transform: capitalize;
+}
+
+.item p.pull-quote {
+    padding: 50px 30px;
+    padding: 20px 30px 20px 80px;
+    color: #777777;
+    margin: 6px auto!important;
+    text-align: left;
+    width: 100%!important;
+    font-style: italic;
+    font-weight: 600;
+    background: #EFEFEF;
+    position: relative;
+}
+
+.item p.pull-quote:before {
+    content: " ";
+    position: absolute;
+    top: 10px;
+    height: 40px;
+    width: 40px;
+    left: 10px;
+    background: url("../img/icons/left-quote.svg") no-repeat;
+    background-size: 40px 40px;
+}
+
+.item p.pull-quote:after {
+    content: " ";
+    position: absolute;
+    bottom: 10px;
+    height: 20px;
+    width: 20px;
+    right: 10px;
+    background: url("../img/icons/right-quote.svg") no-repeat;
+    background-size: 15px 15px;
+}
+
+.reviewsPerUser {
+    margin-bottom: 10px;
+}
+
+.reviewsPerUser .author {
+    display: block;
+    font-style: normal;
+    text-transform: capitalize;
+    font-weight: 400;
+    color: #7D7D7D;
+}
+
+.reviewsPerUser .author i {
+    margin-right: 5px;
+    font-style: normal;
+}
+
+.starRatingHolder {
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+}
+
+.starRatingHolder .starrating {
+    width: 10px;
+    height: 10px;
+}
+
+.starRating {
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }

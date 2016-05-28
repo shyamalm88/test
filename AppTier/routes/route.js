@@ -6,8 +6,8 @@ var express = require("express"),
     router = express.Router();
 
 //Api Key
-var mapApiKey = 'AIzaSyC4xjrSTD2KELiRE9a6VqFo5a7ykX8Ydw0',
-    searchApiKey = 'AIzaSyAzyPg-0q71sGRkmFLxrTaI5-zZPDr3rSA',
+var mapApiKey = 'AIzaSyA0I2skHnjKGzyRen0P7uhM-OuiwgNcp4g', //Avik's api : AIzaSyC4xjrSTD2KELiRE9a6VqFo5a7ykX8Ydw0', //Shyamal's api : 'AIzaSyA0I2skHnjKGzyRen0P7uhM-OuiwgNcp4g'
+    searchApiKey = 'AIzaSyBoJp3KY6J5cnrlBT2rFMAS46FVHzRChs4', //Avik's api : 'AIzaSyAzyPg-0q71sGRkmFLxrTaI5-zZPDr3rSA', //Shyamal's api : 'AIzaSyBoJp3KY6J5cnrlBT2rFMAS46FVHzRChs4'
     //searchApiKey = 'AIzaSyAI9zCJo1ms31DHnZ-hMtcPwRomMJgXI0k',
     pageToken;
 
