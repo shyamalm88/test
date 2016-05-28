@@ -93,9 +93,12 @@ router.post('/getPlaceDetails', function(req, resp) {
 });
 
 router.post('/getPlacePhoto', function(req, resp) {
+
     var url = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=' + searchApiKey,
         optionUrl = createReqUrl(url, req.body),
         options = { url: optionUrl };
+
+    console.log('request options' + options + 'options url' + optionUrl)
 
     request.get(options, function(error, response, body) {
         if (error)

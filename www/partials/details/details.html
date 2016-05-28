@@ -22,7 +22,7 @@
                 <div class="list">
                     <label class="item item-input">
                         <i class="icon ion-search placeholder-icon"></i>
-                        <input type="search" name="" placeholder="Search desired places" md-autofocus="false" />
+                        <input type="search" name="" placeholder="Search desired places" />
                     </label>
                 </div>
             </div>
@@ -39,10 +39,10 @@
                     <h4 class="address" ng-show="placeDetailsData.formatted_phone_number || placeDetailsData.international_phone_number">
                         <i class="ion-android-call"></i>{{placeDetailsData.formatted_phone_number}} / {{placeDetailsData.international_phone_number}}</h4>
                     <h4>
-                        <a ng-href="{{placeDetailsData.website}}" ng-show="placeDetailsData.website">
+                        <a ng-href="{{placeDetailsData.website}}" target="_blank" ng-show="placeDetailsData.website">
                             <i class="ion-ios-world-outline"></i>{{placeDetailsData.website}}</a>
                     </h4>
-                    <img ng-src="{{placePhoto}}" />
+                    <!-- <img ng-src="{{placePhoto}}" /> -->
                     <h2 ng-show="review.text">Reviews</h2>
                     <div class="reviews" ng-repeat="review in placeDetailsData.reviews" ng-show="review.text">
                         <div class="reviewsPerUser" ng-show="review.text">
