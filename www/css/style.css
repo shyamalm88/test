@@ -658,7 +658,7 @@ body {
 
 .item p.pull-quote {
     padding: 50px 30px;
-    padding: 20px 95px 20px 70px;
+    padding: 20px 95px 20px 50px;
     color: #777777;
     margin: 6px auto!important;
     text-align: left;
@@ -672,12 +672,12 @@ body {
 .item p.pull-quote:before {
     content: " ";
     position: absolute;
-    top: 10px;
-    height: 40px;
-    width: 40px;
+    top: 15px;
+    height: 20px;
+    width: 20px;
     left: 10px;
     background: url("../img/icons/left-quote.svg") no-repeat;
-    background-size: 40px 40px;
+    background-size: 20px 20px;
 }
 
 .item p.pull-quote:after {
