@@ -39,7 +39,8 @@ hereApp.config(["$stateProvider", "$urlRouterProvider", "$locationProvider",
             .state('details', {
                 url: '/details',
                 templateUrl: 'partials/details/details.html',
-                controller: 'detailsController'
+                controller: 'detailsController',
+                params: {placeID:null}
             })
             .state('invite', {
                 url: '/invite',

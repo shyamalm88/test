@@ -39,8 +39,10 @@
                         <h4 class="address">
                             <i class="ion-location" ng-show="result.vicinity"></i>{{result.vicinity}}</h4>
                         <h5 class="rating" ng-show="result.rating">{{result.rating}}</h5>
-                        <h5 class="distance" ng-show="result.distance.distance.text">Distance: {{result.distance.distance.text}}</h5>
-                        <h5 class="rating" ng-show="result.rating">{{result.rating}}</h5>
+                        <h4 class="address" ng-show="result.distance.distance.text">
+                            <i class="ion-android-walk"></i>{{result.distance.distance.text}}</h4>
+                        <a href="javascript:void(0)" ng-click="goToDetails(result.place_id)">Get Details & Direction</a>
+                        <a href="" class="button button-positive button-small viewOnMap">View on map</a>
                     </div>
                 </div>
             </div>

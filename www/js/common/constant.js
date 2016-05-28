@@ -10,5 +10,6 @@ hereApp.constant('hereAppConstant', {
         'GET_PLACE_AUTOCOMPLETE': 'webService/getPlaceAutoComplete',
         'GET_PLACE_DETAILS': 'webService/getPlaceDetails',
         'GET_NEAR_BY': 'webService/getNearbyData',
+        'GET_PLACE_PHOTO': 'webService/getPlacePhoto'
     }
 })
