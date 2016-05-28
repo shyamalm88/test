@@ -7,6 +7,7 @@ hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultS
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
                 if (toState.name == 'searchResult') {
                     $scope.nextPageToken = null;
+                    $scope.allMarkerVisible = true;
                     $scope.getNearByData(toParams.type);
                 }
             })

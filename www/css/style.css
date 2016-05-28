@@ -644,7 +644,8 @@ body {
     width: 40px;
 }
 
-.button.button-positive.viewOnMap {
+.button.button-positive.viewOnMap,
+.button.button-positive.viewAllOnMap {
     position: absolute;
     right: 0px;
     bottom: 0px;
@@ -654,7 +655,9 @@ body {
     background-color: #3185FF;
     text-transform: capitalize;
 }
-
+.button.button-positive.viewAllOnMap{
+    position: static;
+}
 .item p.pull-quote {
     padding: 50px 30px;
     padding: 20px 95px 20px 50px;

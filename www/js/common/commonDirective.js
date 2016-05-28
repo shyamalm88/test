@@ -1,5 +1,5 @@
 'use strict'
-hereApp.directive('hereAppMap', function(commonService, $timeout ) {
+hereApp.directive('hereAppMap', function(commonService, $timeout, $ionicScrollDelegate ) {
     return {
         restrict: 'E',
         templateUrl: 'partials/common/map.html',
@@ -14,15 +14,20 @@ hereApp.directive('hereAppMap', function(commonService, $timeout ) {
                 markerArray = [],
                 directionsDisplay = new google.maps.DirectionsRenderer,
                 directionsService = new google.maps.DirectionsService,
-                stepDisplay = new google.maps.InfoWindow;;
+                infowindow = new google.maps.InfoWindow();
             // some delay to get the dom ready
-            $timeout(function(){
+            var mapInit = function(location){
+                if(!location)
+                    var location = (commonService.userData.userSelectedPosition)?commonService.userData.userSelectedPosition: commonService.userData.userPosition;
                 map = new google.maps.Map(document.getElementById('mapLocation'), {
                     zoom: 12,
-                    center: (commonService.userData.userSelectedPosition)?commonService.userData.userSelectedPosition: commonService.userData.userPosition,
+                    center: location,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 });
 
+            }
+            $timeout(function(){                
+                mapInit();
                 scope.$watch('data', function(newVal, oldVal) {
                     if (newVal) {
                         scope.showDataOnMap();
@@ -36,17 +41,33 @@ hereApp.directive('hereAppMap', function(commonService, $timeout ) {
                 }, true)
             },1000)
             
+            // view on map functionality for search result page
+            scope.$parent.viewOnMap = function(result){
+                $ionicScrollDelegate.scrollTop();
+                scope.$parent.allMarkerVisible = false;                
+                mapInit(result.geometry.location);
+                var marker = new google.maps.Marker({
+                    position: result.geometry.location,
+                    map: map
+                });
+            }
             
+            scope.$parent.viewAllPinsOnMap = function(){  
+                mapInit();
+                scope.showDataOnMap();
+            }
+
             scope.showDataOnMap = function() {
                 if (scope.showPins) {
+                    scope.$parent.allMarkerVisible = true;
+
                     var locations = [],
                         marker, i, placeName = [];
                     angular.forEach(scope.data, function(value, key) {
                         placeName.push(value.name);
                         locations.push([value.vicinity, value.geometry.location.lat, value.geometry.location.lng, key.length - 1]);
                     });
-                    var infowindow = new google.maps.InfoWindow();
-
+                    
                     _.each(locations, function(location, i) {
                         marker = new google.maps.Marker({
                             position: new google.maps.LatLng(location[1], location[2]),
@@ -61,22 +82,20 @@ hereApp.directive('hereAppMap', function(commonService, $timeout ) {
                             '<p>' + location[0] + '</p>' +
                             '</div>' +
                             '</div>';
-
-                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                            return function() {
-                                infowindow.setContent(contentString);
-                                //infowindow.setContent(location[0]);
-                                infowindow.open(map, marker);
-                                /*if (marker.getAnimation() !== null) {
-                                    marker.setAnimation(null);
-                                } else {
-                                    marker.setAnimation(google.maps.Animation.BOUNCE);
-                                }*/
-                            }
-                        })(marker, i));
+                        addClickHandlerToPushPins(marker, contentString);
                     })
                 }
             }
+
+            var addClickHandlerToPushPins = function(marker, contentString){
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.close();
+                    infowindow.setContent(contentString);
+                    infowindow.open(map, marker);
+                });
+            }
+
+            // for direction in detail page
             scope.showDirectionOnMap = function(){
                 if(scope.showDirection){                    
                     directionsDisplay.setMap(map);
@@ -95,13 +114,13 @@ hereApp.directive('hereAppMap', function(commonService, $timeout ) {
                 }, function(response, status) {
                   if (status == google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);
-                    showSteps(response, markerArray, stepDisplay, map);
+                    showSteps(response, markerArray, infowindow, map);
                   } else {
                     window.alert('Directions request failed due to ' + status);
                   }
                 });
 
-                function showSteps(directionResult, markerArray, stepDisplay, map) {
+                function showSteps(directionResult, markerArray, infowindow, map) {
                   // For each step, place a marker, and add the text to the marker's infowindow.
                   // Also attach the marker to an array so we can keep track of it and remove it
                   // when calculating new routes.
@@ -110,18 +129,9 @@ hereApp.directive('hereAppMap', function(commonService, $timeout ) {
                         var marker = markerArray[i] = markerArray[i] || new google.maps.Marker;
                         marker.setMap(map);
                         marker.setPosition(myRoute.steps[i].start_location);
-                        attachInstructionText(stepDisplay, marker, myRoute.steps[i].instructions, map);
+                        addClickHandlerToPushPins(marker, myRoute.steps[i].instructions);
                     }
                 }
-
-                function attachInstructionText(stepDisplay, marker, text, map) {
-                    google.maps.event.addListener(marker, 'click', function() {
-                        // Open an info window when the marker is clicked on, containing the text
-                        // of the step.
-                        stepDisplay.setContent(text);
-                        stepDisplay.open(map, marker);
-                    });
-                }  
             }
         }]
     }

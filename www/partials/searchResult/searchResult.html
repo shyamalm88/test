@@ -30,6 +30,9 @@
     </div>
     <ion-content class="has-header has-footer-tab mainBg">
         <div class="mainContent">
+            <div class="text-center" ng-if="!allMarkerVisible">
+              <div class="button button-positive button-small viewAllOnMap" ng-click="viewAllPinsOnMap()">View all on map</div>
+            </div>
             <here-app-map map-data="searchResultData" show-pins="true"></here-app-map>
             <div ng-repeat="result in searchResultData" ng-show="result.name">
                 <div class="card">
@@ -43,7 +46,7 @@
                             <h4 class="address" ng-show="result.distance.distance.text">
                                 <i class="ion-android-walk"></i>{{result.distance.distance.text}}</h4>
                         </div>
-                        <a href="javascript:void(0)" class="button button-positive button-small viewOnMap">View on map</a>
+                        <a href="javascript:void(0)" class="button button-positive button-small viewOnMap" ng-click="viewOnMap(result)">View on map</a>
                     </div>
                 </div>
             </div>
