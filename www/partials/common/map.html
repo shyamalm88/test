@@ -1,1 +1,20 @@
 <div id="mapLocation"></div>
+<div class="direction" ng-if="showDirection" ng-show="showDirection">
+    <div class="button-bar bar-light direction-mode">
+        <a class="button" href="javascript:void(0)" ng-click="changeDirectionMode('WALKING')">
+            <i class="ion-android-walk"></i>
+        </a>
+        <a class="button" href="javascript:void(0)" ng-click="changeDirectionMode('BICYCLING')">
+            <i class="ion-android-bicycle"></i>
+        </a>
+        <a class="button" href="javascript:void(0)" ng-click="changeDirectionMode('DRIVING')">
+            <i class="ion-model-s"></i>
+        </a>
+        <a class="button" href="javascript:void(0)" ng-click="changeDirectionMode('TRANSIT')">
+            <i class="ion-android-train"></i>
+        </a>
+    </div>
+</div>
+<div class="card">
+    <div id="direction-details"></div>
+</div>
