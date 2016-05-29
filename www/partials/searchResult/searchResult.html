@@ -1,4 +1,4 @@
-<ion-view view-title="{{currentLocation}}">
+<ion-view view-title="{{searchType}}">
     <ion-nav-bar align-title="center" class="bar-positive">
         <ion-nav-buttons side="left">
             <div class="bar bar-header">
@@ -7,30 +7,70 @@
                 </button>
                 <div class="button button-clear">
                     <button class="button button-clear" ng-click="toggleSearchPane()">
-                        <span class="icon-search"></span>
+                        <span class="icon-search headerIcons"></span>
+                    </button>
+                    <button class="button button-clear" ng-click="toggleAutocompletePane()">
+                        <span class="ion-location locationIcon headerIcons"></span>
                     </button>
                     <button class="button button-clear" ng-click="openPopover($event)">
-                        <span class="icon-menu rotate"></span>
+                        <span class="icon-menu rotate headerIcons"></span>
                     </button>
                 </div>
             </div>
         </ion-nav-buttons>
     </ion-nav-bar>
-    <div class="bar bar-positive bar-subheader" ng-show="custom">
+    <div class="bar bar-positive bar-subheader bar-subheader-lg" ng-show="customSearch">
         <div class="row">
-            <div class="col noPadding abcd">
+            <div class="col noPadding">
                 <div class="list">
-                    <label class="item item-input">
-                        <i class="icon ion-search placeholder-icon"></i>
-                        <input type="search" name="" placeholder="Search desired places" md-autofocus="false" />
-                    </label>
+                    <div class="row">
+                        <div class="col col-33 noPadding">
+                            <md-input-container class="selectionSearch">
+                                <label>Category</label>
+                                <md-select ng-model="slection.category">
+                                    <md-option ng-repeat="item in filterGroups" value="{{item.name}}">
+                                        {{item.name}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                        <div class="col col-67 noPadding">
+                            <label class="item item-input searchTextInSearchDetails">
+                                <i class="icon ion-search placeholder-icon"></i>
+                                <input type="search" name="" placeholder="Search desired places" />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bar bar-positive bar-subheader bar-subheader-lg" ng-show="customAutocomplete">
+        <div class="row">
+            <div class="col noPadding">
+                <div class="list">
+                    <div class="row">
+                        <div class="col noPadding">
+                            <label class="item item-input">
+                                <i class="icon ion-location placeholder-icon"></i>
+                                <md-autocomplete md-selected-item="currentLocation" md-search-text="searchText" md-items="item in getPlaceAutoCompleteData(searchText)" md-item-text="item.description" md-selected-item-change="selectedItemChange(item)" md-min-length="2" md-no-cache="true" placeholder="Choose Your Location" md-autofocus="false">
+                                    <md-item-template>
+                                        <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.description}}</span>
+                                    </md-item-template>
+                                </md-autocomplete>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <ion-content class="has-header has-footer-tab mainBg">
-        <div class="mainContent">
+        <div class="mainContent noMargin">
             <here-app-map map-data="searchResultData" show-pins="true"></here-app-map>
+            <div class="text-center" ng-if="!allMarkerVisible">
+                <div class="button button-positive button-small viewAllOnMap" ng-click="viewAllPinsOnMap()">View all on map</div>
+            </div>
             <div ng-repeat="result in searchResultData" ng-show="result.name">
                 <div class="card">
                     <div class="item item-text-wrap searchresults">
@@ -38,12 +78,14 @@
                         <div ng-click="goToDetails(result.place_id)">
                             <h2 class="placesName">{{result.name}}</h2>
                             <h4 class="address">
-                                <i class="ion-location" ng-show="result.vicinity"></i>{{result.vicinity}}</h4>
+                                <i class="ion-location" ng-show="result.vicinity"></i>
+                                <span>{{result.vicinity}}</span>
+                            </h4>
                             <h5 class="rating" ng-show="result.rating">{{result.rating}}</h5>
                             <h4 class="address" ng-show="result.distance.distance.text">
                                 <i class="ion-android-walk"></i>{{result.distance.distance.text}}</h4>
                         </div>
-                        <a href="javascript:void(0)" class="button button-positive button-small viewOnMap">View on map</a>
+                        <a href="javascript:void(0)" class="button button-positive button-small viewOnMap" ng-click="viewOnMap(result)">View on map</a>
                     </div>
                 </div>
             </div>

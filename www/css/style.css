@@ -126,9 +126,9 @@ body {
 
 .bar .title {
     white-space: nowrap;
-    width: 13em;
     overflow: hidden;
     margin-left: 40px;
+    margin-right: 120px;
     text-overflow: ellipsis;
 }
 
@@ -561,8 +561,7 @@ body {
 
 #mapLocation {
     width: 100%;
-    height: 240px;
-    margin-top: -20px;
+    height: 300px;
 }
 
 .searchResults .address {
@@ -582,6 +581,7 @@ body {
 
 .searchResults {
     position: relative;
+    min-height: 100px;
 }
 
 .searchResults .rating {
@@ -596,6 +596,7 @@ body {
 
 .searchresults {
     position: relative;
+    min-height: 100px;
 }
 
 .searchresults h2 {
@@ -651,7 +652,8 @@ body {
     width: 40px;
 }
 
-.button.button-positive.viewOnMap {
+.button.button-positive.viewOnMap,
+.button.button-positive.viewAllOnMap {
     position: absolute;
     right: 0px;
     bottom: 0px;
@@ -660,6 +662,10 @@ body {
     padding: 2px 20px;
     background-color: #3185FF;
     text-transform: capitalize;
+}
+
+.button.button-positive.viewAllOnMap {
+    position: static;
 }
 
 .item p.pull-quote {
@@ -730,4 +736,177 @@ body {
     position: absolute;
     top: 15px;
     right: 15px;
+}
+
+.noMargin {
+    margin: 0px !important;
+}
+
+.adp-placemark {
+    margin: 0px !important;
+}
+
+.adp-placemark td {
+    vertical-align: middle;
+    padding: 5px;
+    background: #2758E5;
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.adp-summary {
+    padding: 0 10px 3px 10px !important;
+}
+
+.adp-details,
+.adp-legal {
+    color: #676767;
+    margin-top: -22px;
+    z-index: -1;
+    position: relative;
+}
+
+.direction-mode a i {
+    font-size: 16px;
+    color: #2657E5;
+}
+
+.button-fab-right {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    left: 10px;
+    top: 225px;
+    z-index: 9;
+}
+
+.adp-directions {
+    width: 100%;
+}
+
+.bar.bar-positive .title {
+    text-transform: capitalize;
+}
+
+.button-bar.direction-mode > .button:first-child,
+.button-bar.direction-mode > .button:last-child {
+    border-radius: 0px;
+}
+
+.viewAllOnMap {
+    margin-top: 20px;
+}
+
+.headerIcons {
+    font-size: 18px !important;
+}
+
+.headerIcons.locationIcon {
+    font-size: 24px !important;
+}
+
+md-input-container.selectionSearch {
+    margin: 0px;
+    width: 100%;
+    display: block;
+    padding-right: 1px;
+}
+
+.selectionSearch md-select.md-default-theme .md-select-value.md-select-placeholder,
+.selectionSearch md-select .md-select-value.md-select-placeholder {
+    color: #000;
+}
+
+md-input-container.md-input-has-value.selectionSearch label:not(.md-no-float) {
+    transform: translate3d(0, 6px, 0) scale(0);
+}
+
+.selectionSearch .md-select-value .md-text {
+    color: #000;
+    width: 78%;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+
+md-autocomplete.md-default-theme,
+md-autocomplete {
+    background: none;
+}
+
+.selectionSearch > md-select {
+    background: #fff;
+    height: 46px;
+    padding-left: 10px;
+    margin-top: -3px;
+}
+
+.selectionSearch > md-select {
+    background: #fff;
+    height: 46px;
+    padding-left: 10px;
+    margin-top: -3px;
+    margin-left: -3px;
+    border-top: 1px solid #DCDCDC;
+}
+
+.selectionSearch .md-select-value {
+    width: 100%;
+}
+
+.selectionSearch .md-select-value {
+    border-bottom: none !important;
+}
+
+.selectionSearch .md-errors-spacer {
+    display: none;
+}
+
+.selectionSearch .md-select-value .md-select-icon {
+    width: 15px;
+    color: #AAA;
+    position: absolute;
+    right: 0px;
+    top: 10px;
+}
+
+.searchTextInSearchDetails {
+    padding: 6px 0 3px 16px;
+}
+
+.selectionSearch md-autocomplete input:not(.md-input) {
+    padding: 0px 15px 0px 0px;
+}
+
+@media only screen and (max-width: 360px) {
+    .bar.bar-positive .title {
+        margin-right: 80px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    /* .bar.bar-positive .title {
+        width: 10em;
+    } */
+    .item p.pull-quote {
+        padding: 30px 25px 20px 30px;
+        font-size: 12px;
+        line-height: 17px;
+    }
+    .item p.pull-quote:before {
+        background-size: 15px 15px;
+        top: 25px;
+        height: 15px;
+        width: 15px;
+    }
+    .button.button-positive.viewOnMap {
+        padding: 1px 5px;
+    }
 }
