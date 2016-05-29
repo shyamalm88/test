@@ -2,6 +2,7 @@
 hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', 'commonService', '$ionicPopover', '$ionicHistory', '$ionicSideMenuDelegate', '$ionicModal', '$ionicLoading',
     function($scope, $state, hereAppConstant, commonService, $ionicPopover, $ionicHistory, $ionicSideMenuDelegate, $ionicModal, $ionicLoading) {
         $scope.commonService = commonService;
+
         // if needed to apply something for all route change
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 
@@ -30,8 +31,15 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
             return $scope.shownGroup === group;
         };
         //toggle search box
+        $scope.customSearch = false;
         $scope.toggleSearchPane = function() {
-            $scope.custom = $scope.custom === false ? true : false;
+            $scope.customAutocomplete = false;
+            $scope.customSearch = $scope.customSearch ? false : true;
+        };
+        $scope.customAutocomplete = false;
+        $scope.toggleAutocompletePane = function() {
+            $scope.customSearch = false;
+            $scope.customAutocomplete = $scope.customAutocomplete ? false : true;
         };
 
         //login modal
@@ -83,11 +91,11 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
         // onSuccess Geolocation
         //
         function onGetLocationSuccess(position) {
-            $scope.commonService.userData.userPostion = {
+            $scope.commonService.userData.userPosition = {
                 'lat': position.coords.latitude,
                 'lng': position.coords.longitude
             };
-            getUserLocationDetails($scope.commonService.userData.userPostion);
+            getUserLocationDetails($scope.commonService.userData.userPosition);
         }
 
         // onError Callback receives a PositionError object

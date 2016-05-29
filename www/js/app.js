@@ -9,6 +9,7 @@ hereApp.config(function($ionicConfigProvider) {
   $ionicConfigProvider.navBar.alignTitle('center');
   $ionicConfigProvider.tabs.position('bottom');
   $ionicConfigProvider.tabs.style('standard');
+  $ionicConfigProvider.views.maxCache(0);
 });
 
 hereApp.run(function($ionicPlatform) {
