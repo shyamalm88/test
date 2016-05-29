@@ -847,6 +847,7 @@ md-autocomplete {
     height: 46px;
     padding-left: 10px;
     margin-top: -3px;
+    margin-left: -3px;
     border-top: 1px solid #DCDCDC;
 }
 
