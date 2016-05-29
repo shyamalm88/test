@@ -31,8 +31,15 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
             return $scope.shownGroup === group;
         };
         //toggle search box
+        $scope.customSearch = false;
         $scope.toggleSearchPane = function() {
-            $scope.custom = $scope.custom === false ? true : false;
+            $scope.customAutocomplete = false;
+            $scope.customSearch = $scope.customSearch ? false : true;
+        };
+        $scope.customAutocomplete = false;
+        $scope.toggleAutocompletePane = function() {
+            $scope.customSearch = false;
+            $scope.customAutocomplete = $scope.customAutocomplete ? false : true;
         };
 
         //login modal

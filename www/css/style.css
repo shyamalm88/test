@@ -792,10 +792,96 @@ body {
     border-radius: 0px;
 }
 
+.viewAllOnMap {
+    margin-top: 20px;
+}
+
+.headerIcons {
+    font-size: 18px !important;
+}
+
+.headerIcons.locationIcon {
+    font-size: 24px !important;
+}
+
+md-input-container.selectionSearch {
+    margin: 0px;
+    width: 100%;
+    display: block;
+    padding-right: 1px;
+}
+
+.selectionSearch md-select.md-default-theme .md-select-value.md-select-placeholder,
+.selectionSearch md-select .md-select-value.md-select-placeholder {
+    color: #000;
+}
+
+md-input-container.md-input-has-value.selectionSearch label:not(.md-no-float) {
+    transform: translate3d(0, 6px, 0) scale(0);
+}
+
+.selectionSearch .md-select-value .md-text {
+    color: #000;
+    width: 78%;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+
+md-autocomplete.md-default-theme,
+md-autocomplete {
+    background: none;
+}
+
+.selectionSearch > md-select {
+    background: #fff;
+    height: 46px;
+    padding-left: 10px;
+    margin-top: -3px;
+}
+
+.selectionSearch > md-select {
+    background: #fff;
+    height: 46px;
+    padding-left: 10px;
+    margin-top: -3px;
+    border-top: 1px solid #DCDCDC;
+}
+
+.selectionSearch .md-select-value {
+    width: 100%;
+}
+
+.selectionSearch .md-select-value {
+    border-bottom: none !important;
+}
+
+.selectionSearch .md-errors-spacer {
+    display: none;
+}
+
+.selectionSearch .md-select-value .md-select-icon {
+    width: 15px;
+    color: #AAA;
+    position: absolute;
+    right: 0px;
+    top: 10px;
+}
+
+.searchTextInSearchDetails {
+    padding: 6px 0 3px 16px;
+}
+
+.selectionSearch md-autocomplete input:not(.md-input) {
+    padding: 0px 15px 0px 0px;
+}
+
 @media only screen and (max-width: 360px) {
-    /* .bar.bar-positive .title {
-        width: 13em;
-    } */
+    .bar.bar-positive .title {
+        margin-right: 80px;
+    }
 }
 
 @media only screen and (max-width: 320px) {

@@ -1,17 +1,19 @@
 'use strict'
-hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultService', 'commonService', '$ionicLoading',
-    function($scope, $state, searchResultService, commonService, $ionicLoading) {
+hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultService', 'commonService', '$ionicLoading', 'homeService',
+    function($scope, $state, searchResultService, commonService, $ionicLoading, homeService) {
 
         $scope.searchResultService = searchResultService;
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-                if (toState.name == 'searchResult') {
-                    $scope.nextPageToken = null;
-                    $scope.allMarkerVisible = true;
-                    $scope.searchType = toParams.type;
-                    $scope.getNearByData(toParams.type);
-                }
-            })
-            // store search result data
+            if (toState.name == 'searchResult') {
+                $scope.nextPageToken = null;
+                $scope.allMarkerVisible = true;
+                $scope.searchType = toParams.type;
+                $scope.getNearByData(toParams.type);
+            }
+        })
+        $scope.filterGroups = homeService.searchFilterGroup.DineOut.filters.concat(homeService.searchFilterGroup.Essentials.filters, homeService.searchFilterGroup.Entertainment.filters);
+        console.log($scope.filterGroups);
+        // store search result data
         $scope.getNearByData = function(item) {
             $scope.searchedType = item;
             var param = $scope.searchResultService.createReqParamForSearch(item, $scope.nextPageToken);
