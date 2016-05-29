@@ -1,5 +1,5 @@
 'use strict'
-hereApp.directive('hereAppMap', function(commonService, $timeout, $ionicScrollDelegate ) {
+hereApp.directive('hereAppMap', function(commonService, $timeout, $ionicScrollDelegate) {
     return {
         restrict: 'E',
         templateUrl: 'partials/common/map.html',
@@ -9,16 +9,22 @@ hereApp.directive('hereAppMap', function(commonService, $timeout, $ionicScrollDe
             showDirection: '=',
             directionDestination: '='
         },
-        controller: ['$scope', function(scope) {
+        controller: ['$scope', '$state', function(scope, $state) {
+            scope.onDetailsPage = false;
+            scope.$state = $state;
+            if ($state.current.name == 'details') {
+                scope.onDetailsPage = true;
+            }
+
             var map,
                 markerArray = [],
                 directionsDisplay = new google.maps.DirectionsRenderer,
                 directionsService = new google.maps.DirectionsService,
                 infowindow = new google.maps.InfoWindow();
             // some delay to get the dom ready
-            var mapInit = function(location){
-                if(!location)
-                    var location = (commonService.userData.userSelectedPosition)?commonService.userData.userSelectedPosition: commonService.userData.userPosition;
+            var mapInit = function(location) {
+                if (!location)
+                    var location = (commonService.userData.userSelectedPosition) ? commonService.userData.userSelectedPosition : commonService.userData.userPosition;
                 map = new google.maps.Map(document.getElementById('mapLocation'), {
                     zoom: 12,
                     center: location,
@@ -26,33 +32,40 @@ hereApp.directive('hereAppMap', function(commonService, $timeout, $ionicScrollDe
                 });
 
             }
-            $timeout(function(){                
+
+            $timeout(function() {
                 mapInit();
                 scope.$watch('data', function(newVal, oldVal) {
                     if (newVal) {
                         scope.showDataOnMap();
                     }
                 }, true)
-
                 scope.$watch('directionDestination', function(newVal, oldVal) {
                     if (newVal) {
                         scope.showDirectionOnMap();
                     }
                 }, true)
-            },1000)
-            
+
+            }, 1000)
+
+            scope.IsVisibleDirection = false;
+            scope.showDirectionMap = function() {
+                scope.IsVisibleDirection = scope.IsVisibleDirection ? false : true;
+
+            }
+
             // view on map functionality for search result page
-            scope.$parent.viewOnMap = function(result){
+            scope.$parent.viewOnMap = function(result) {
                 $ionicScrollDelegate.scrollTop();
-                scope.$parent.allMarkerVisible = false;                
+                scope.$parent.allMarkerVisible = false;
                 mapInit(result.geometry.location);
                 var marker = new google.maps.Marker({
                     position: result.geometry.location,
                     map: map
                 });
             }
-            
-            scope.$parent.viewAllPinsOnMap = function(){  
+
+            scope.$parent.viewAllPinsOnMap = function() {
                 mapInit();
                 scope.showDataOnMap();
             }
@@ -67,7 +80,7 @@ hereApp.directive('hereAppMap', function(commonService, $timeout, $ionicScrollDe
                         placeName.push(value.name);
                         locations.push([value.vicinity, value.geometry.location.lat, value.geometry.location.lng, key.length - 1]);
                     });
-                    
+
                     _.each(locations, function(location, i) {
                         marker = new google.maps.Marker({
                             position: new google.maps.LatLng(location[1], location[2]),
@@ -87,7 +100,7 @@ hereApp.directive('hereAppMap', function(commonService, $timeout, $ionicScrollDe
                 }
             }
 
-            var addClickHandlerToPushPins = function(marker, contentString){
+            var addClickHandlerToPushPins = function(marker, contentString) {
                 google.maps.event.addListener(marker, 'click', function() {
                     infowindow.close();
                     infowindow.setContent(contentString);
@@ -96,34 +109,34 @@ hereApp.directive('hereAppMap', function(commonService, $timeout, $ionicScrollDe
             }
 
             // for direction in detail page
-            scope.showDirectionOnMap = function(){
-                if(scope.showDirection){                    
+            scope.showDirectionOnMap = function() {
+                if (scope.showDirection) {
                     directionsDisplay.setMap(map);
                     directionsDisplay.setPanel(document.getElementById('direction-details'));
                     scope.changeDirectionMode('DRIVING');
                 }
             }
-            scope.changeDirectionMode = function(selectedMode){
+            scope.changeDirectionMode = function(selectedMode) {
                 for (var i = 0; i < markerArray.length; i++) {
                     markerArray[i].setMap(null);
                 }
                 directionsService.route({
-                  origin: commonService.userData.userPosition,
-                  destination: scope.directionDestination, 
-                  travelMode: google.maps.TravelMode[selectedMode]
+                    origin: commonService.userData.userPosition,
+                    destination: scope.directionDestination,
+                    travelMode: google.maps.TravelMode[selectedMode]
                 }, function(response, status) {
-                  if (status == google.maps.DirectionsStatus.OK) {
-                    directionsDisplay.setDirections(response);
-                    showSteps(response, markerArray, infowindow, map);
-                  } else {
-                    window.alert('Directions request failed due to ' + status);
-                  }
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        directionsDisplay.setDirections(response);
+                        showSteps(response, markerArray, infowindow, map);
+                    } else {
+                        window.alert('Directions request failed due to ' + status);
+                    }
                 });
 
                 function showSteps(directionResult, markerArray, infowindow, map) {
-                  // For each step, place a marker, and add the text to the marker's infowindow.
-                  // Also attach the marker to an array so we can keep track of it and remove it
-                  // when calculating new routes.
+                    // For each step, place a marker, and add the text to the marker's infowindow.
+                    // Also attach the marker to an array so we can keep track of it and remove it
+                    // when calculating new routes.
                     var myRoute = directionResult.routes[0].legs[0];
                     for (var i = 0; i < myRoute.steps.length; i++) {
                         var marker = markerArray[i] = markerArray[i] || new google.maps.Marker;

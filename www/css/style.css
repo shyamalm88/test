@@ -126,9 +126,9 @@ body {
 
 .bar .title {
     white-space: nowrap;
-    width: 13em;
     overflow: hidden;
     margin-left: 40px;
+    margin-right: 120px;
     text-overflow: ellipsis;
 }
 
@@ -762,16 +762,46 @@ body {
     position: relative;
 }
 
+.direction-mode a i {
+    font-size: 16px;
+    color: #2657E5;
+}
+
+.button-fab-right {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    left: 10px;
+    top: 225px;
+    z-index: 9;
+}
+
+.adp-directions {
+    width: 100%;
+}
+
+.bar.bar-positive .title {
+    text-transform: capitalize;
+}
+
+.button-bar.direction-mode > .button:first-child,
+.button-bar.direction-mode > .button:last-child {
+    border-radius: 0px;
+}
+
 @media only screen and (max-width: 360px) {
-    .bar.bar-positive .title {
+    /* .bar.bar-positive .title {
         width: 13em;
-    }
+    } */
 }
 
 @media only screen and (max-width: 320px) {
-    .bar.bar-positive .title {
+    /* .bar.bar-positive .title {
         width: 10em;
-    }
+    } */
     .item p.pull-quote {
         padding: 30px 25px 20px 30px;
         font-size: 12px;

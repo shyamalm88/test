@@ -1,4 +1,4 @@
-<ion-view view-title="{{currentLocation}}">
+<ion-view view-title="{{searchType}}s">
     <ion-nav-bar align-title="center" class="bar-positive">
         <ion-nav-buttons side="left">
             <div class="bar bar-header">
@@ -29,7 +29,7 @@
         </div>
     </div>
     <ion-content class="has-header has-footer-tab mainBg">
-        <div class="mainContent noMargin">
+        <div class="mainContent">
             <div class="text-center" ng-if="!allMarkerVisible">
                 <div class="button button-positive button-small viewAllOnMap" ng-click="viewAllPinsOnMap()">View all on map</div>
             </div>

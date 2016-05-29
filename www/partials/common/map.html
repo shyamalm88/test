@@ -1,20 +1,23 @@
 <div id="mapLocation"></div>
-<div class="direction" ng-if="showDirection" ng-show="showDirection">
+<div class="direction" ng-if="showDirection">
     <div class="button-bar bar-light direction-mode">
-        <a class="button" href="javascript:void(0)" ng-click="changeDirectionMode('WALKING')">
+        <a class="button button-small" href="javascript:void(0)" ng-click="changeDirectionMode('WALKING')">
             <i class="ion-android-walk"></i>
         </a>
-        <a class="button" href="javascript:void(0)" ng-click="changeDirectionMode('BICYCLING')">
+        <a class="button button-small" href="javascript:void(0)" ng-click="changeDirectionMode('BICYCLING')">
             <i class="ion-android-bicycle"></i>
         </a>
-        <a class="button" href="javascript:void(0)" ng-click="changeDirectionMode('DRIVING')">
+        <a class="button button-small" href="javascript:void(0)" ng-click="changeDirectionMode('DRIVING')">
             <i class="ion-model-s"></i>
         </a>
-        <a class="button" href="javascript:void(0)" ng-click="changeDirectionMode('TRANSIT')">
+        <a class="button button-small" href="javascript:void(0)" ng-click="changeDirectionMode('TRANSIT')">
             <i class="ion-android-train"></i>
         </a>
     </div>
 </div>
-<div class="card">
+<button id="fab" class="button button-positive button-fab button-fab-right activated" ng-show="onDetailsPage" ng-click="showDirectionMap()">
+    <i class="icon ion-compass"></i>
+</button>
+<div class="card" ng-show="IsVisibleDirection">
     <div id="direction-details"></div>
 </div>

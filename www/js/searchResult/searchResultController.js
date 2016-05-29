@@ -1,4 +1,3 @@
-
 'use strict'
 hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultService', 'commonService', '$ionicLoading',
     function($scope, $state, searchResultService, commonService, $ionicLoading) {
@@ -8,6 +7,7 @@ hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultS
                 if (toState.name == 'searchResult') {
                     $scope.nextPageToken = null;
                     $scope.allMarkerVisible = true;
+                    $scope.searchType = toParams.type;
                     $scope.getNearByData(toParams.type);
                 }
             })
