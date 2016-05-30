@@ -1,6 +1,6 @@
 'use strict'
-hereApp.controller('detailsController', ['$scope', '$state', 'detailsService', 'commonService',
-    function($scope, $state, detailsService, commonService) {
+hereApp.controller('detailsController', ['$scope', '$state', 'detailsService', 'commonService', 'homeService', 
+    function($scope, $state, detailsService, commonService, homeService) {
         $scope.detailsService = detailsService;
         $scope.commonService = commonService;
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
@@ -9,7 +9,7 @@ hereApp.controller('detailsController', ['$scope', '$state', 'detailsService', '
 
             }
         })
-
+$scope.filterGroups = homeService.searchFilterGroup.DineOut.filters.concat(homeService.searchFilterGroup.Essentials.filters, homeService.searchFilterGroup.Entertainment.filters);
         $scope.getPlaceDetails = function(placeID) {
             var param = { placeid: placeID };
 

@@ -29,7 +29,7 @@
                                 <label>Category</label>
                                 <md-select ng-model="slection.category">
                                     <md-option ng-repeat="item in filterGroups" value="{{item.name}}">
-                                        {{item.name}}
+                                       <img ng-src="{{item.imgPath}}" class="optionImage"/> {{item.name}}
                                     </md-option>
                                 </md-select>
                             </md-input-container>
