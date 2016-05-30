@@ -7,7 +7,7 @@ var express = require("express"),
 
 //Api Key
 var mapApiKey = 'AIzaSyC4xjrSTD2KELiRE9a6VqFo5a7ykX8Ydw0', //Avik's api : 'AIzaSyC4xjrSTD2KELiRE9a6VqFo5a7ykX8Ydw0', //Shyamal's api : 'AIzaSyA0I2skHnjKGzyRen0P7uhM-OuiwgNcp4g', 'AIzaSyBfrVC5tsPWVsyH7Txa79b_-2bIQ_VIAkI'
-    searchApiKey = 'AIzaSyAzyPg-0q71sGRkmFLxrTaI5-zZPDr3rSA', //Avik's api : 'AIzaSyAzyPg-0q71sGRkmFLxrTaI5-zZPDr3rSA', //Shyamal's api : 'AIzaSyBoJp3KY6J5cnrlBT2rFMAS46FVHzRChs4', 'AIzaSyDe8KZdVOTrU3KdZP7_4AbJUGqea7IYBq4' 
+    searchApiKey = 'AIzaSyBoJp3KY6J5cnrlBT2rFMAS46FVHzRChs4', //Avik's api : 'AIzaSyAzyPg-0q71sGRkmFLxrTaI5-zZPDr3rSA', //Shyamal's api : 'AIzaSyBoJp3KY6J5cnrlBT2rFMAS46FVHzRChs4', 'AIzaSyDe8KZdVOTrU3KdZP7_4AbJUGqea7IYBq4' 
     //searchApiKey = 'AIzaSyAI9zCJo1ms31DHnZ-hMtcPwRomMJgXI0k',
     pageToken;
 
@@ -40,7 +40,7 @@ router.post('/getNearbyData', function(req, resp) {
                     destinationList = destinationList + '|' + data.results[i].geometry.location.lat + ',' + data.results[i].geometry.location.lng;
             }
             var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?key=' + searchApiKey + '&origins=' + req.body.location + '&destinations=' + destinationList;
-            console.log(url);
+            
             request.get({ url: url }, function(error, response, body) {
                 if (error)
                     return error;
@@ -48,7 +48,7 @@ router.post('/getNearbyData', function(req, resp) {
                     locationData = JSON.parse(body);
                     for (var j = 0; j < data.results.length; j++) {
                         data.results[j].distance = {};
-                        //data.results[j].distance = locationData.rows[0].elements[j];
+                        data.results[j].distance = locationData.rows[0].elements[j];
                     }
                     resp.send(data);
                 }
@@ -96,16 +96,14 @@ router.post('/getPlacePhoto', function(req, resp) {
 
     var url = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=' + searchApiKey,
         optionUrl = createReqUrl(url, req.body),
-        options = { url: optionUrl };
-
-    console.log('request options' + options + 'options url' + optionUrl)
+        options = { url: optionUrl,followRedirect: false };
 
     request.get(options, function(error, response, body) {
         if (error)
             resp.send(error);
         else {
-
-            resp.send(resp.headers.locationData);
+  
+            resp.send({data:response.headers.location, status:'OK'});
         }
     });
 });

@@ -83,7 +83,13 @@
                         <a ng-href="{{placeDetailsData.website}}" target="_blank" ng-show="placeDetailsData.website">
                             <i class="ion-ios-world-outline"></i>{{placeDetailsData.website}}</a>
                     </h4>
-                    <!-- <img ng-src="{{placePhoto}}" /> -->
+                    <div class="slider-content">
+                        <ion-slides  options="slideOptions" slider="data.slider">
+                            <ion-slide-page ng-repeat="photo in placePhotosArray">
+                              <img ng-src={{photo}} />
+                            </ion-slide-page>
+                        </ion-slides>
+                    </div>
                     <h2 ng-show="review.text">Reviews</h2>
                     <div class="reviews" ng-repeat="review in placeDetailsData.reviews" ng-show="review.text">
                         <div class="reviewsPerUser" ng-show="review.text">

@@ -887,6 +887,18 @@ md-autocomplete {
     margin-right:10px;
 }
 
+.slider-content{
+    height:230px;
+}
+.slider-content .swiper-wrapper{
+    height: 200px;
+}
+.slider-content .swiper-wrapper .swiper-slide{
+    padding:2px;
+}
+.slider-content .swiper-wrapper img{
+    height:200px;
+}
 @media only screen and (max-width: 360px) {
     .bar.bar-positive .title {
         margin-right: 80px;

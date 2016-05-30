@@ -9,31 +9,40 @@ hereApp.controller('detailsController', ['$scope', '$state', 'detailsService', '
 
             }
         })
-$scope.filterGroups = homeService.searchFilterGroup.DineOut.filters.concat(homeService.searchFilterGroup.Essentials.filters, homeService.searchFilterGroup.Entertainment.filters);
+        $scope.filterGroups = homeService.searchFilterGroup.DineOut.filters.concat(homeService.searchFilterGroup.Essentials.filters, homeService.searchFilterGroup.Entertainment.filters);
         $scope.getPlaceDetails = function(placeID) {
             var param = { placeid: placeID };
 
             $scope.commonService.proxyService.callWS($scope.commonService.proxyService.getPlaceDetails, param)
                 .then(function(placeData) {
                     if (placeData.status == "OK") {
-
                         $scope.placeDetailsData = placeData.result;
-                        //$scope.showPlacePhoto($scope.placeDetailsData.photos[5].photo_reference);
+                        $scope.createPhotoArray($scope.placeDetailsData.photos);
                     }
                 }, function(error) {
                     throw error;
                 })
         }
-        $scope.showPlacePhoto = function(photoRef) {
+        $scope.createPhotoArray = function(photos){
+            $scope.placePhotosArray = [];
+            _.each(photos, function(photo){
+                $scope.getPlacePhoto(photo.photo_reference);
+            })
+        }
+        $scope.getPlacePhoto = function(photoRef) {
             var param = { photoreference: photoRef };
             $scope.commonService.proxyService.callWS($scope.commonService.proxyService.getPlacePhoto, param)
                 .then(function(placePhoto) {
                     if (placePhoto.status == "OK") {
-                        $scope.placePhoto = placePhoto;
+                        $scope.placePhotosArray.push(placePhoto.data);
                     }
                 }, function(error) {
                     throw error;
                 })
+        }
+        
+        $scope.slideOptions = {
+            slidesPerView: '2',
         }
     }
 ])
