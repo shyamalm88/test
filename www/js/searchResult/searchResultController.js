@@ -3,6 +3,7 @@ hereApp.controller('searchResultController', ['$scope', '$state', 'searchResultS
     function($scope, $state, searchResultService, commonService, $ionicLoading, homeService) {
 
         $scope.searchResultService = searchResultService;
+        $scope.commonService = commonService;
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
             if (toState.name == 'searchResult') {
                 $scope.nextPageToken = null;

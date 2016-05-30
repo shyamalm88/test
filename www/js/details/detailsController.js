@@ -40,9 +40,8 @@ hereApp.controller('detailsController', ['$scope', '$state', 'detailsService', '
                     throw error;
                 })
         }
-        
         $scope.slideOptions = {
-            slidesPerView: '2',
+            slidesPerView: '2'
         }
     }
 ])
