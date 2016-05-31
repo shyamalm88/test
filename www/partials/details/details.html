@@ -6,9 +6,6 @@
                     <span class="ion-android-arrow-back"></span>
                 </button>
                 <div class="button button-clear">
-                    <button class="button button-clear" ng-click="toggleSearchPane()">
-                        <span class="icon-search headerIcons"></span>
-                    </button>
                     <button class="button button-clear" ng-click="toggleAutocompletePane()">
                         <span class="ion-location locationIcon headerIcons"></span>
                     </button>
@@ -19,33 +16,7 @@
             </div>
         </ion-nav-buttons>
     </ion-nav-bar>
-    <div class="bar bar-positive bar-subheader bar-subheader-lg" ng-show="customSearch">
-        <div class="row">
-            <div class="col noPadding">
-                <div class="list">
-                    <div class="row">
-                        <div class="col col-33 noPadding">
-                            <md-input-container class="selectionSearch">
-                                <label>Category</label>
-                                <md-select ng-model="slection.category">
-                                    <md-option ng-repeat="item in filterGroups" value="{{item.name}}">
-                                        <img ng-src="{{item.imgPath}}" class="optionImage"/> {{item.name}}
-                                    </md-option>
-                                </md-select>
-                            </md-input-container>
-                        </div>
-                        <div class="col col-67 noPadding">
-                            <label class="item item-input searchTextInSearchDetails">
-                                <i class="icon ion-search placeholder-icon"></i>
-                                <input type="search" name="" placeholder="Search desired places" />
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="bar bar-positive bar-subheader bar-subheader-lg" ng-show="customAutocomplete">
+    <div class="bar bar-positive bar-subheader bar-subheader-lg" ng-hide="customAutocomplete">
         <div class="row">
             <div class="col noPadding">
                 <div class="list">
@@ -53,7 +24,7 @@
                         <div class="col noPadding">
                             <label class="item item-input">
                                 <i class="icon ion-location placeholder-icon"></i>
-                                <md-autocomplete md-selected-item="currentLocation" md-search-text="searchText" md-items="item in getPlaceAutoCompleteData(searchText)" md-item-text="item.description" md-selected-item-change="selectedItemChange(item)" md-min-length="2" md-no-cache="true" placeholder="Choose Your Location" md-autofocus="false">
+                                <md-autocomplete md-selected-item="currentLocation" md-search-text="searchText" md-items="item in getPlaceAutoCompleteData(searchText)" md-item-text="item.description" md-selected-item-change="selectedItemChange(item)" md-min-length="2" md-no-cache="true" placeholder="Choose A Different Location" md-autofocus="true">
                                     <md-item-template>
                                         <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.description}}</span>
                                     </md-item-template>

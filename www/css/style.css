@@ -777,6 +777,7 @@ body {
     left: 10px;
     top: 225px;
     z-index: 9;
+    touch-events: none
 }
 
 .adp-directions {
@@ -899,9 +900,20 @@ md-autocomplete {
 .slider-content .swiper-wrapper img{
     height:200px;
 }
+
+.selectionSearch .md-select-value span{
+    width:100%;
+}
+
+.address span{
+    overflow:hidden;
+    display:block;
+    margin-bottom: 10px;
+}
+
 @media only screen and (max-width: 360px) {
     .bar.bar-positive .title {
-        margin-right: 80px;
+        margin-right: 90px;
     }
 }
 

@@ -26,7 +26,7 @@ hereApp.service('homeService', ['proxyService', function(proxyService) {
             'heading': 'Essentials Places Nearby',
             'filters': [
                 { 'imgPath': 'img/icons/atm.svg', 'name': 'ATM', 'type': 'atm' },
-                { 'imgPath': 'img/icons/blood.svg', 'name': 'Blood Bank', 'type': 'bakery' },
+                { 'imgPath': 'img/icons/blood.svg', 'name': 'Blood Bank', 'type': 'health' },
                 { 'imgPath': 'img/icons/bank.svg', 'name': 'Bank', 'type': 'bank' },
                 { 'imgPath': 'img/icons/hospital.svg', 'name': 'Hospital', 'type': 'hospital' },
                 { 'imgPath': 'img/icons/police.svg', 'name': 'Police Station', 'type': 'police' },
