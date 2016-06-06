@@ -34,7 +34,7 @@ hereApp.config(["$stateProvider", "$urlRouterProvider", "$locationProvider",
                 url: '/searchResult',
                 templateUrl: 'partials/searchResult/searchResult.html',
                 controller: 'searchResultController',
-                params: {type:null}
+                params: {type:null, name: null}
             })
             .state('details', {
                 url: '/details',

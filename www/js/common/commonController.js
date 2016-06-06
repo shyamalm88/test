@@ -5,8 +5,9 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
 
         // if needed to apply something for all route change
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-
-            })
+            $scope.customSearch = false;
+            $scope.customAutocomplete = false;
+        })
             //grant location access
         accessUserLoationData();
 
@@ -154,7 +155,7 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
 
         $scope.selectedItemChange = function(item) {
             if (typeof item === 'object') {
-
+                $scope.hasSelectedUserPos = false;
                 $scope.commonService.userData.userSelectedLocation = item.description;
                 $scope.currentLocation = $scope.commonService.userData.userSelectedLocation;
                 var param = { 'placeid': item.place_id };
@@ -165,6 +166,8 @@ hereApp.controller('commonController', ['$scope', '$state', 'hereAppConstant', '
                             var countryData = _.find(data.result.address_components, { 'types': ["country"] });
                             if (countryData)
                                 $scope.commonService.userData.country = countryData.short_name;
+                                
+                            $scope.hasSelectedUserPos = true;
                         }
                     }, function(error) {
                         throw error;

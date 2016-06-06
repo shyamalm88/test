@@ -9,8 +9,8 @@ hereApp.controller('homeController', ['$scope', '$state','hereAppConstant', 'hom
             
         })
 
-        $scope.getDetails = function(item){
-        	$state.go('searchResult', {type:item});
+        $scope.getSearchResult = function(type, name){
+        	$state.go('searchResult', {type:type, name: name});
         }
         
 

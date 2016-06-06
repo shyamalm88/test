@@ -15,7 +15,10 @@ hereApp.service('proxyService', ['$http', 'hereAppConstant', 'hereAppUtil', '$q'
 
       return $http(reqObj)
         .then(function(response) {
-          $ionicLoading.hide()
+          setTimeout(function() {
+            if(!hideLoader)
+              $ionicLoading.hide()
+          }, 2000);
           if (typeof response.data === 'object') {
             return response.data;
           }

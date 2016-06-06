@@ -20,30 +20,34 @@
         </ion-nav-buttons>
     </ion-nav-bar>
     <div class="bar bar-positive bar-subheader bar-subheader-lg" ng-show="customSearch">
-        <div class="row">
-            <div class="col noPadding">
-                <div class="list">
-                    <div class="row">
-                        <div class="col col-33 noPadding">
-                            <md-input-container class="selectionSearch">
-                                <label>Category</label>
-                                <md-select ng-model="slection.category">
-                                    <md-option ng-repeat="item in filterGroups" value="{{item.name}}">
-                                       <img ng-src="{{item.imgPath}}" class="optionImage"/> {{item.name}}
-                                    </md-option>
-                                </md-select>
-                            </md-input-container>
-                        </div>
-                        <div class="col col-67 noPadding">
-                            <label class="item item-input searchTextInSearchDetails">
-                                <i class="icon ion-search placeholder-icon"></i>
-                                <input type="search" name="" placeholder="Search desired places" />
-                            </label>
+        <form ng-submit="onSubmitNewSearch()">
+            <div class="row">
+                <div class="col noPadding">
+                    <div class="list">
+                        <div class="row">
+                            <div class="col col-33 noPadding">
+                                <md-input-container class="selectionSearch">
+                                    <label>Category</label>
+                                    <md-select ng-model="searchCategoryName" ng-change="onChangeSearchType(searchCategoryName)">
+                                        <md-option ng-repeat="item in filterGroups" value="{{item.name}}">
+                                           <img ng-src="{{item.imgPath}}" class="optionImage"/> {{item.name}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                            <div class="col col-67 noPadding">
+                                <label class="item item-input searchTextInSearchDetails">
+                                    <i class="icon ion-search placeholder-icon"></i>
+                                    <input type="search" name="" placeholder="Search desired places" ng-model="searchPlace"/>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <button type="submit" ng-hide ="true"/>
+        </form>
+        
     </div>
     <div class="bar bar-positive bar-subheader bar-subheader-lg" ng-show="customAutocomplete">
         <div class="row">

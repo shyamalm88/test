@@ -34,14 +34,15 @@ hereApp.directive('hereAppMap', function(commonService, $timeout, $ionicScrollDe
             }
 
             $timeout(function() {
-                mapInit();
                 scope.$watch('data', function(newVal, oldVal) {
                     if (newVal) {
+                        mapInit();
                         scope.showDataOnMap();
                     }
                 }, true)
                 scope.$watch('directionDestination', function(newVal, oldVal) {
                     if (newVal) {
+                        mapInit();
                         scope.showDirectionOnMap();
                     }
                 }, true)
